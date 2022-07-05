@@ -9,7 +9,7 @@ app.on('ready' ,() => {//! controla la aplicacion y la inicializa (contenedor)
 
     });//!BroswerWindow objeto que va para la ventana tam
     
-    win.loadFile("../../HTML/entrada.html");//* con loadfile() -> se carga y manda a llamar el index 
+    win.loadFile("../../entrada.html");//* con loadfile() -> se carga y manda a llamar el index 
     win.on('closed',() => {
         win = null;
         app.quit();
