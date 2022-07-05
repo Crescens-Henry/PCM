@@ -4,12 +4,12 @@
   "description": "proyecto integrador",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"electron index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Crescencs/PCM.git",
-    "dev": "electron index.js"
+    "url": "git+https://github.com/Crescencs/PCM.git" 
   },
   "author": "",
   "license": "ISC",
