@@ -3,7 +3,7 @@ const pass = document.querySelector('#password');
 const button = document.querySelector('#button');
 
 let users;
-
+// se debe editar par que sea solo de base de datos y extraerlos y utilizarlos
 let usersPreCargados = [{ user: 'majocosta', pass: '1234', nombre: 'María José Domínguez Costa' }, 
 { user: 'Crescencio', pass: '5678', nombre: 'Crescencio Perez Santiz' }, 
 { user: 'PaolaPenagos', pass: '9876', nombre: 'Paola Anaray Canseco Penagos' }];
