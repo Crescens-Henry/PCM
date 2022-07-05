@@ -35,7 +35,7 @@ button.addEventListener('click', () => {
                 alert('¡Bienvenido ' + users[i].nombre + '!');
                 error = false;
 
-                window.location.href = "./Menu Principal.html";
+                window.location.href = "../../HTML/Menu Principal.html";
                 break;
             }
         }
