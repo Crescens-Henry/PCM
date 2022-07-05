@@ -8,7 +8,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Crescencs/PCM.git"
+    "url": "git+https://github.com/Crescencs/PCM.git",
+    "dev": "electron index.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +19,8 @@
   "homepage": "https://github.com/Crescencs/PCM#readme",
   "dependencies": {
     "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "electron": "^19.0.7"
   }
 }
