@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Crescencs/PCM/issues"
   },
-  "homepage": "https://github.com/Crescencs/PCM#readme"
+  "homepage": "https://github.com/Crescencs/PCM#readme",
+  "dependencies": {
+    "mysql2": "^2.3.3"
+  }
 }
