@@ -1,4 +1,4 @@
-const conexion = require('./conectar.js');
+const conexion = require('../conectar.js');
 
 const RegistrarContador =()=>{
     var nombre = document.getElementById("nombre").value;
@@ -7,6 +7,24 @@ const RegistrarContador =()=>{
     var password = document.getElementById("password").value;
 //Instruccion SQL
         $query = `INSERT INTO contador (id_contador,nombre,apellido,rango,contraseña) VALUES ('','${nombre}','${apellido}','${rango}','${password}')`;
+        conexion.query($query, function (err) {
+            if (err) {
+                console.log("error en el query");
+                console.log(err);
+                return;
+            }
+            else { alert("Datos guardados") }
+        });
+}
+
+const RegistrarCliente =()=>{
+    var nombre = document.getElementById("nombreCliente").value;
+    var rfc = document.getElementById("claveRFC").value;
+    var tipo = document.getElementById("tipo").value;
+    var numCuenta = document.getElementById("numCuenta").value;
+    var documentos = document.getElementById("documentos").value;
+//Instruccion SQL
+        $query = `INSERT INTO cliente (id_cliente,nombre,rfc,tipo,cuentaBancaria,docs) VALUES ('','${nombre}','${rfc}','${tipo}','${numCuenta}','${documentos}')`;
         conexion.query($query, function (err) {
             if (err) {
                 console.log("error en el query");
