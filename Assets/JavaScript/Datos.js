@@ -34,8 +34,7 @@ button.addEventListener('click', () => {
                 localStorage.setItem("usuario", users[i].nombre);
                 alert('¡Bienvenido ' + users[i].nombre + '!');
                 error = false;
-
-                window.location.href = "../../HTML/MenuPrincipal.html";
+                window.location.href = "HTML/MenuPrincipal.html";
                 break;
             }
         }
