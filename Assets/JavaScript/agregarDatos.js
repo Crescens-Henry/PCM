@@ -1,6 +1,6 @@
 const conexion = require('../conectar.js');
 
-const RegistrarContador = () => {
+const RegistrarContador = () => {//! listo
     var nombre = document.getElementById("nombre").value;
     var apellido = document.getElementById("apellido").value;
     var rango = document.getElementById("rango").value;
@@ -18,7 +18,7 @@ const RegistrarContador = () => {
     });
 }
 
-const RegistrarCliente = () => {
+const RegistrarCliente = () => {//!listo
     var nombre = document.getElementById("nombreCliente").value;
     var rfc = document.getElementById("claveRFC").value;
     var tipo = document.getElementById("tipo").value;
