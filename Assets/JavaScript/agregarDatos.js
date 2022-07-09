@@ -17,7 +17,6 @@ const RegistrarContador = () => {//! listo
         }
     });
 }
-
 const RegistrarCliente = () => {//!listo
     var nombre = document.getElementById("nombreCliente").value;
     var rfc = document.getElementById("claveRFC").value;
@@ -34,7 +33,6 @@ const RegistrarCliente = () => {//!listo
         }
     });
 }
-
 const RegistrarPalabras = () => {// componer el tipo de variables
     var palabra = document.getElementById("palabra").value;
     var concepto = document.getElementById("concepto").value;
@@ -50,39 +48,42 @@ const RegistrarPalabras = () => {// componer el tipo de variables
         }
     });
 }
-
-
-
 const ConsultarCarpetas = () => { //! metodo de consulta -- importante!
 
-    $query = 'Select * from carpeta;'; // instruccion SQL
+    $query = `SELECT cliente.nombreComCliente, cliente.rfc, cliente.tipo, contador.nombreComContador,carpeta.descDocumentos, carpeta.cuentaBancaria  FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador;
+`;
+ // instruccion SQL
     let tablaR = document.getElementById("table");
     conexion.query($query, function (err, rows) {
         if (err) {
             console.log("error en el query");
             console.log(err);
             return;
-        } else {
+        } else {//! resultado en pantalla
             //*lo que se extrae de la BD, queda guardado en ROWS que se vuelve lista de objetos
             var long = rows.length; // se obtiene el tamano de la lista
             for (i = 0; i < long; i++) {
                 var newRow = tablaR.insertRow(-1);
-                var celdaNombre = newRow.insertCell(0);
+                var celdaNombreCliente = newRow.insertCell(0);
                 var celdaClave = newRow.insertCell(1);
                 var celdaDocumentos = newRow.insertCell(2);
                 var celdaTipo = newRow.insertCell(3);
-                var celdaContador = newRow.insertCell(4);
-                var celdaCuentaBancaria = newRow.insertCell(5);
+                var celdaNombreContador = newRow.insertCell(4);
+                var celdaCuenta = newRow.insertCell(5);
 
-                var textoNombre = document.createTextNode(rows[i].nombre);
-                var textClave = document.createTextNode(rows[i].id_carpeta);
-                var textDocumentos = document.createTextNode(rows[i].Nombre);
-                var textTipo = document.createTextNode(rows[i].Nombre);
-                var textContador = document.createTextNode(rows[i].Nombre);
-                var textCuentaBancaria = document.createTextNode(rows[i].Nombre);
+                var textoNombre = document.createTextNode(rows[i].nombreComCliente);
+                var textClave = document.createTextNode(rows[i].rfc);
+                var textDocumentos = document.createTextNode(rows[i].tipo);
+                var textTipo = document.createTextNode(rows[i].nombreComContador);
+                var textContador = document.createTextNode(rows[i].descDocumentos);
+                var textCuentaBancaria = document.createTextNode(rows[i].cuentaBancaria);
 
-                celdaId.appendChild(textoId);
-                celdaUsuario.appendChild(textUsuario);
+                celdaNombreCliente.appendChild(textoNombre);
+                celdaClave.appendChild(textClave);
+                celdaDocumentos.appendChild(textDocumentos);
+                celdaTipo.appendChild(textTipo);
+                celdaNombreContador.appendChild(textContador);
+                celdaCuenta.appendChild(textCuentaBancaria);
             }
             //alert(cadena)
         }
@@ -92,9 +93,9 @@ const ConsultarCarpetas = () => { //! metodo de consulta -- importante!
 
 
 function Buscar() {
-    var nombre = document.getElementById("userSearch").value;
-    $query = `select *from Usuarios where Nombre ='${nombre}';`
-
+    var rfc = document.getElementById("userSearch").value;
+    $query = `SELECT cliente.nombreCom, cliente.rfc, cliente.tipo, contador.nombreCom, carpeta.cuentaBancaria, carpeta.descDocumentos FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador where rfc ='${rfc}';`
+    //SELECT cliente.nombreCom, cliente.rfc, cliente.tipo, contador.nombreCom, carpeta.cuentaBancaria, carpeta.descDocumentos FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador;
     let tablaR = document.getElementById("table2");
     conexion.query($query, function (err, rows) {
         if (err) {
@@ -107,8 +108,8 @@ function Buscar() {
             for (i = 0; i < long; i++) { //Se utiliza para recorrer la lista
                 //cadena += rows[i].id + ' ' + rows[i].nombre +  ' ' + rows[i].contraseña +'\n';//Registro
                 var newRow = tablaR.insertRow(-1);
-                var celdaId = newRow.insertCell(0);
-                var celdaUsuario = newRow.insertCell(1);
+                var celdaNombreCiente = newRow.insertCell(0);
+                var celdaRFC = newRow.insertCell(1);
                 var textoId = document.createTextNode(rows[i].Id_Usuario);
                 var textoUsuario = document.createTextNode(rows[i].Nombre);
                 celdaId.appendChild(textoId);

@@ -1,4 +1,5 @@
 .container-1 {
+  /*mofdificar  cada container por cada interfaz*/
   width: 387px;
   height: 250px;
   background: #dfdce3;
@@ -12,6 +13,7 @@
   line-height: 1.3;
   text-align: center;
   align-items: center;
+  overflow-y: auto;
 }
 .top {
   border-color: #000000;
