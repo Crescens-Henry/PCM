@@ -1,12 +1,12 @@
 const conexion = require('../conectar.js');
 
-const RegistrarContador = () => {//! listo
+const RegistrarContador = () => {
     var nombre = document.getElementById("nombre").value;
-    var apellido = document.getElementById("apellido").value;
     var rango = document.getElementById("rango").value;
     var password = document.getElementById("password").value;
     //Instruccion SQL
-    $query = `INSERT INTO contador (id_contador,nombre,apellido,rango,contraseña) VALUES ('','${nombre}','${apellido}','${rango}','${password}')`;
+    $query = `INSERT INTO contador (id_contador,nombreComContador,rango,contraseña) 
+    VALUES ('','${nombre}','${rango}','${password}')`;
     conexion.query($query, function (err) {
         if (err) {
             console.log("error en el query");
@@ -17,11 +17,12 @@ const RegistrarContador = () => {//! listo
         }
     });
 }
-const RegistrarCliente = () => {//!listo
+const RegistrarCliente = () => {
     var nombre = document.getElementById("nombreCliente").value;
     var rfc = document.getElementById("claveRFC").value;
     var tipo = document.getElementById("tipo").value;
     //Instruccion SQL
+    //! debemo extraer por defecto el id de contador para que se asigne automaticamente a usuario cliente
     $query = `INSERT INTO cliente (id_cliente,nombre,rfc,tipo) VALUES ('','${nombre}','${rfc}','${tipo}')`;
     conexion.query($query, function (err) {
         if (err) {
@@ -33,11 +34,11 @@ const RegistrarCliente = () => {//!listo
         }
     });
 }
-const RegistrarPalabras = () => {// componer el tipo de variables
+const RegistrarPalabras = () => {
     var palabra = document.getElementById("palabra").value;
     var concepto = document.getElementById("concepto").value;
     //  Instruccion SQL
-    $query = `INSERT INTO diccionario (id_diccionario,palabra,concepto) VALUES ('','${palabra}','${concepto}')`;
+    $query = `INSERT INTO diccionario (palabra,concepto) VALUES ('${palabra}','${concepto}')`;
     conexion.query($query, function (err) {
         if (err) {
             console.log("error en el query");
@@ -53,7 +54,7 @@ const ConsultarCarpetas = () => { //! metodo de consulta -- importante!
     $query = `SELECT cliente.nombreComCliente, cliente.rfc, cliente.tipo, contador.nombreComContador,carpeta.descDocumentos, carpeta.cuentaBancaria  FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador;
 `;
  // instruccion SQL
-    let tablaR = document.getElementById("table");
+    let tablaCarpetas = document.getElementById("table");
     conexion.query($query, function (err, rows) {
         if (err) {
             console.log("error en el query");
@@ -63,7 +64,7 @@ const ConsultarCarpetas = () => { //! metodo de consulta -- importante!
             //*lo que se extrae de la BD, queda guardado en ROWS que se vuelve lista de objetos
             var long = rows.length; // se obtiene el tamano de la lista
             for (i = 0; i < long; i++) {
-                var newRow = tablaR.insertRow(-1);
+                var newRow = tablaCarpetas.insertRow(-1);
                 var celdaNombreCliente = newRow.insertCell(0);
                 var celdaClave = newRow.insertCell(1);
                 var celdaDocumentos = newRow.insertCell(2);
@@ -90,6 +91,37 @@ const ConsultarCarpetas = () => { //! metodo de consulta -- importante!
     })
 }
 
+document.addEventListener('DOMContentLoaded', ConsultarCarpetas,false)// inicializa la tabla
+
+const ConsultarDiccionario = () =>{
+    
+//var cadena;
+$query = 'select * FROM diccionario;';// instruccion SQL
+let tablaDiccionario = document.getElementById("tableDiccionario");
+conexion.query($query, function (err, rows) {
+    if (err) {
+        console.log("error en el query");
+        console.log(err);
+        return;
+    }
+    else{
+        //lo que se extrae de la BD, queda guardado en ROWS que se vuelve lista de objetos
+        var long = rows.length;// se obtiene el tamano de la lista
+        for (i = 0; i < long; i++) {
+            var newRowDiccionarnio = tablaDiccionario.insertRow(-1);
+            var celdaPalabra = newRowDiccionarnio.insertCell(0);
+            var celdaConcepto = newRowDiccionarnio.insertCell(1);
+            var textoPalabra = document.createTextNode(rows[i].palabra);
+            var textConcepto = document.createTextNode(rows[i].concepto);
+
+            celdaPalabra.appendChild(textoPalabra);
+            celdaConcepto.appendChild(textConcepto);
+        }
+        //alert(cadena)
+    }
+})
+}
+document.addEventListener('DOMContentLoaded', ConsultarDiccionario,false)// inicializa la tabla
 
 
 function Buscar() {
