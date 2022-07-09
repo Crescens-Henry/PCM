@@ -94,7 +94,6 @@ const ConsultarCarpetas = () => { //! metodo de consulta -- importante!
 document.addEventListener('DOMContentLoaded', ConsultarCarpetas,false)// inicializa la tabla
 
 const ConsultarDiccionario = () =>{
-    
 //var cadena;
 $query = 'select * FROM diccionario;';// instruccion SQL
 let tablaDiccionario = document.getElementById("tableDiccionario");
