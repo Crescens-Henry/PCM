@@ -23,7 +23,7 @@ const RegistrarCliente = () => {
     var tipo = document.getElementById("tipo").value;
     //Instruccion SQL
     //! debemo extraer por defecto el id de contador para que se asigne automaticamente a usuario cliente
-    $query = `INSERT INTO cliente (id_cliente,nombre,rfc,tipo) VALUES ('','${nombre}','${rfc}','${tipo}')`;
+    $query = `INSERT INTO cliente (id_cliente,nombreComCliente,rfc,tipo,contador_id_contador) VALUES ('','${nombre}','${rfc}','${tipo}','10005')`;
     conexion.query($query, function (err) {
         if (err) {
             console.log("error en el query");

@@ -31,20 +31,20 @@ a {
   height: auto;
   width: auto;
   max-width: 50%;
-  overflow: hidden;
+  overflow: auto;
   background: transparent;
   margin: 0;
   position: static;
 }
 
 .flexsearch--form {
-  overflow: hidden;
+  overflow: auto;
   position: relative;
 }
 
 .flexsearch--input-wrapper {
   padding: 0 66px 0 0; /* Right padding for submit button width */
-  overflow: hidden;
+  overflow: auto;
 }
 
 .flexsearch--input {
@@ -157,7 +157,7 @@ a {
 .layout {
   display: grid;
   width: 100%;
-  overflow: hidden;
+  overflow: auto;
   grid-template-rows: 50px 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   position: relative;
@@ -235,7 +235,7 @@ input[type="radio"]:checked + .page {
 .datagrid {
   font: normal 12px/150% Arial, Helvetica, sans-serif;
   background: #fff;
-  overflow: hidden;
+  overflow: auto;
   border: 2px solid #000000;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;

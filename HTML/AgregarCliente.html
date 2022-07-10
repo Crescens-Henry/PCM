@@ -14,7 +14,13 @@
         <div style="text-align: center;" class="top"> Agregar Cliente</div>
         <label class="label-1"><img class="plain-svg-1" class="rectangle-1" src="../Assets/IMAGENES/usuario.png"><input id="nombreCliente" placeholder="Nombre"></label><br><br>
         <input id="claveRFC" placeholder="RFC"><br><br>
-        <input id="tipo" placeholder="Tipo"><br><br>
+        <select name="options" id="tipo">
+            <option value="Fisica - pequeña">Fisica - pequeña</option>
+            <option value="fisica - extensa">fisica - extensa</option>
+            <option value="moral - extensa">moral - extensa</option>
+            <option value="moral - pequeña">moral - pequeña</option>
+        </select>
+        <br><br>
         <button id="button-S" type="submit" onclick="RegistrarCliente()"><a href="./Carpetas.html">Agregar</a></button>
     </div>
 </body>
