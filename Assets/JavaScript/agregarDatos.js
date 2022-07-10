@@ -13,7 +13,26 @@ const RegistrarContador = () => {
             console.log(err);
             return;
         } else {
-            alert("Datos guardados")
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Datos guardados'
+
+            })
+            setTimeout(() => {
+                window.location.href = "../entrada.html";
+            }, 2000);
         }
     });
 }
@@ -22,15 +41,35 @@ const RegistrarCliente = () => {
     var rfc = document.getElementById("claveRFC").value;
     var tipo = document.getElementById("tipo").value;
     //Instruccion SQL
+    
     //! debemo extraer por defecto el id de contador para que se asigne automaticamente a usuario cliente
-    $query = `INSERT INTO cliente (id_cliente,nombreComCliente,rfc,tipo,contador_id_contador) VALUES ('','${nombre}','${rfc}','${tipo}','10005')`;
+    $query = `INSERT INTO cliente (id_cliente,nombreComCliente,rfc,tipo,contador_id_contador) VALUES ('','${nombre}','${rfc}','${tipo}','${contador}')`;
     conexion.query($query, function (err) {
         if (err) {
             console.log("error en el query");
             console.log(err);
             return;
         } else {
-            alert("Datos guardados")
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Datos guardados'
+
+            })
+            setTimeout(() => {
+                window.location.href = "/HTML/Carpetas.html";
+            }, 2000);
         }
     });
 }
@@ -45,16 +84,35 @@ const RegistrarPalabras = () => {
             console.log(err);
             return;
         } else {
-            alert("Datos guardados")
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Datos guardados'
+
+            })
+            setTimeout(() => {
+                window.location.href = "/HTML/Diccionario.html";
+            }, 2000);
         }
     });
 }
 
 function Buscar() {
-    var rfc = document.getElementById("userSearch").value;
-    $query = `SELECT cliente.nombreCom, cliente.rfc, cliente.tipo, contador.nombreCom, carpeta.cuentaBancaria, carpeta.descDocumentos FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador where rfc ='${rfc}';`
+    var rfc = document.getElementById("rfcSearch").value;
+    $query = `SELECT cliente.nombreComCliente, cliente.rfc, cliente.tipo, carpeta.descDocumentos, contador.nombreComContador, carpeta.cuentaBancaria FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador where rfc ='${rfc}';`
     //SELECT cliente.nombreCom, cliente.rfc, cliente.tipo, contador.nombreCom, carpeta.cuentaBancaria, carpeta.descDocumentos FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador;
-    let tablaR = document.getElementById("table2");
+    let tablaR = document.getElementById("table");
     conexion.query($query, function (err, rows) {
         if (err) {
             console.log("error en el query");
@@ -66,12 +124,25 @@ function Buscar() {
             for (i = 0; i < long; i++) { //Se utiliza para recorrer la lista
                 //cadena += rows[i].id + ' ' + rows[i].nombre +  ' ' + rows[i].contraseña +'\n';//Registro
                 var newRow = tablaR.insertRow(-1);
-                var celdaNombreCiente = newRow.insertCell(0);
+                var celdaNombreCliente = newRow.insertCell(0);
                 var celdaRFC = newRow.insertCell(1);
-                var textoId = document.createTextNode(rows[i].Id_Usuario);
-                var textoUsuario = document.createTextNode(rows[i].Nombre);
-                celdaId.appendChild(textoId);
-                celdaUsuario.appendChild(textoUsuario);
+                var celdaDocumentos = newRow.insertCell(2);
+                var celdaTipo = newRow.insertCell(3);
+                var celdaNombreContador = newRow.insertCell(4);
+                var celdaCuenta = newRow.insertCell(5);
+
+                var textoNombreCliente = document.createTextNode(rows[i].nombreComCliente);
+                var textoRFC = document.createTextNode(rows[i].rfc);
+                var textoDocumentos = document.createTextNode(rows[i].descDocumentos);
+                var textoTipo = document.createTextNode(rows[i].tipo);
+                var textoNombreContador = document.createTextNode(rows[i].nombreComContador);
+                var textoCuenta = document.createTextNode(rows[i].cuentaBancaria);
+                celdaNombreCliente.appendChild(textoNombreCliente);
+                celdaRFC.appendChild(textoRFC);
+                celdaDocumentos.appendChild(textoDocumentos);
+                celdaTipo.appendChild(textoTipo);
+                celdaNombreContador.appendChild(textoNombreContador);
+                celdaCuenta.appendChild(textoCuenta);
             }
             //alert(cadena);
         }

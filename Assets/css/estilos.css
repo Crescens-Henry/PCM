@@ -134,7 +134,7 @@ body {
   background-color: #c4c0bf;
   align-items: center;
   position: fixed;
-  overflow-y: scroll;
+  overflow-y: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

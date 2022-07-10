@@ -10,7 +10,7 @@
   <title>PCM</title>
 </head>
 
-<body style="width: 80%">
+<body style="width: 98%">
   <div class="layout">
     <label class="nav">
       <span>
@@ -43,9 +43,9 @@
     <div class="flexsearch--wrapper">
       <form class="flexsearch--form" action="#" method="post">
         <div class="flexsearch--input-wrapper">
-          <input class="flexsearch--input" type="search" placeholder="Buscar Cliente">
+          <input class="flexsearch--input" type="search" id="rfcSearch" placeholder="Buscar Cliente">
         </div>
-        <input class="flexsearch--submit" type="submit" value="&#10140;" />
+        <input class="flexsearch--submit" type="submit" value="&#10140;" onclick="Buscar()" />
       </form>
     </div>
   </div>
@@ -57,8 +57,8 @@
         <tr>
           <th>Nombre</th>
           <th>Clave</th>
-          <th>Documentos</th>
           <th>Tipo</th>
+          <th>Documentos</th>
           <th>Contador</th>
           <th>Cuenta bancaria</th>
         </tr>
@@ -71,5 +71,6 @@
   </div>
 </body>
 <script src="../Assets/JavaScript/Carpeta.js"></script>
+<script src="../Assets/JavaScript/agregarDatos.js"></script>
 
 </html>

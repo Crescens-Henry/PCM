@@ -2,7 +2,7 @@ const conexion = require('../conectar.js');
 
 const ConsultarCarpetas = () => { //! metodo de consulta -- importante!
 
-    $query = `SELECT cliente.nombreComCliente, cliente.rfc, cliente.tipo, contador.nombreComContador,carpeta.descDocumentos, carpeta.cuentaBancaria  FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador;
+    $query = `SELECT cliente.nombreComCliente, cliente.rfc, cliente.tipo,carpeta.descDocumentos, contador.nombreComContador, carpeta.cuentaBancaria  FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador;
 `;
  // instruccion SQL
     let tablaCarpetas = document.getElementById("table");
@@ -26,8 +26,8 @@ const ConsultarCarpetas = () => { //! metodo de consulta -- importante!
                 var textoNombre = document.createTextNode(rows[i].nombreComCliente);
                 var textClave = document.createTextNode(rows[i].rfc);
                 var textDocumentos = document.createTextNode(rows[i].tipo);
-                var textTipo = document.createTextNode(rows[i].nombreComContador);
-                var textContador = document.createTextNode(rows[i].descDocumentos);
+                var textTipo = document.createTextNode(rows[i].descDocumentos);
+                var textContador = document.createTextNode(rows[i].nombreComContador);
                 var textCuentaBancaria = document.createTextNode(rows[i].cuentaBancaria);
 
                 celdaNombreCliente.appendChild(textoNombre);

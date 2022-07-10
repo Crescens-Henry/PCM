@@ -1,10 +1,14 @@
-const user = document.querySelector('#txtContador');
+const {default: Swal} = require('sweetalert2');
+const {query}= require('./conectar');
+var conexion = require('./conectar');
+const contador = document.querySelector('#txtContador');
 const pass = document.querySelector('#password');
 const button = document.querySelector('#button');
 
-let users;
-// se debe editar par que sea solo de base de datos y extraerlos y utilizarlos
-let usersPreCargados = [{ user: 'majocosta', pass: '1234', nombre: 'María José Domínguez Costa' }, 
+
+//let users;
+
+/*let usersPreCargados = [{ user: 'majocosta', pass: '1234', nombre: 'María José Domínguez Costa' }, 
 { user: 'Crescencio', pass: '5678', nombre: 'Crescencio Perez Santiz' }, 
 { user: 'PaolaPenagos', pass: '9876', nombre: 'Paola Anaray Canseco Penagos' }];
 
@@ -15,45 +19,184 @@ if (localStorage.getItem('registro')) {
     users = newArray;
 } else {
     users = usersPreCargados;
-}
+}*/
 
 
 button.addEventListener('click', () => {
-    let usuario = user.value;
+    var nombre = contador.value;
     let password = pass.value;
-    let error = true;
+    let err = true;
 
-    if (usuario == '') {
-        alert('Ingrese usuario, por favor.');
-    }
-    if (password == '') {
-        alert('Ingrese contraseña, por favor.');
-    } else {
-        for (let i = 0; i < users.length; i++) {
-            if (usuario === users[i].user && password === users[i].pass) {
-                localStorage.setItem("usuario", users[i].nombre);
-                alert('¡Bienvenido ' + users[i].nombre + '!');
-                error = false;
-                window.location.href = "HTML/MenuPrincipal.html";
-                break;
+    if (nombre == '') {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
-        }
-        if (error) {
-            alert('¡Datos incorrectos!');
-        }
+        })
+
+        Toast.fire({
+            icon: 'info',
+            title: 'Ingrese usuario, por favor'
+
+        })
+    } else if (password == '') {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'info',
+            title: 'Ingrese contraseña, por favor'
+
+        })
+    } else {
+        $query = `select * from contador where nombreComContador ='${nombre}'`;
+        conexion.query($query, function (err, rows) {
+            if (err) {
+                console.log("error en el query");
+                console.log(err);
+                return;
+            } else if (rows.length != 0) { //'&& contraseña ='${pass}
+                console.log(password)
+                console.log(rows[0].contraseña)
+
+                if (rows[0].contraseña == password) {
+                    err = false;
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Inicio de sesion exitoso'
+
+                    })
+                    setTimeout(() => {
+                        window.location.href = "HTML/MenuPrincipal.html";
+                    }, 2000);
+
+                } else {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Contraseña incorrecta, intente de nuevo'
+                    })
+                }
+            } else {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Usuario no encontrado'
+
+                })
+            }
+            /* for (let i = 0; i < users.length; i++) {
+                 if (usuario === users[i].user && password === users[i].pass) {
+                     
+                     localStorage.setItem("usuario", users[i].nombre);
+                     alert('¡Bienvenido ' + users[i].nombre + '!');
+                     error = false;
+
+                    
+                     break;
+                 }
+             }
+             if (error) {
+                 alert('¡Datos incorrectos!');
+             }*/
+        });
     }
 });
 
-const validarPassword=(password, usuarios)=>{
+/*const validarPassword=(password, usuarios)=>{
     for(i=0; i<usuarios.length;i++){
         if(password==usuarios[i].password){
             return password;
         }
     }
     return -1;
+}*/
+
+const RegistrarContador = () => {
+    var nombre = document.getElementById("nombre").value;
+    var apellido = document.getElementById("apellido").value;
+    var rango = document.getElementById("rango").value;
+    var password = document.getElementById("password").value;
+    //Instruccion SQL
+    $query = `INSERT INTO contador (id_contador,nombre,apellido,rango,contraseña) VALUES ('','${nombre}','${apellido}','${rango}','${password}')`;
+    conexion.query($query, function (err) {
+        if (err) {
+            console.log("error en el query");
+            console.log(err);
+            return;
+        } else {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Datos guardados'
+
+            })
+            setTimeout(() => {
+                window.location.href = "./entrada.html";
+            }, 2000);
+        }
+    });
 }
-
-
 /*const Registro=()=>{
         listaUsuarios=JSON.parse(localStorage.getItem("lista"));
         let correo= document.getElementById("txtCorreo").value;// mando a llamar los datos 
@@ -65,4 +208,4 @@ const validarPassword=(password, usuarios)=>{
         Usuarios.unshift(users)
         console.log(Usuarios);
         location.href="InicioSesion.html";
-    }*/
+}*/
