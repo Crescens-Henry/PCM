@@ -10,8 +10,8 @@
   <title>PCM</title>
 </head>
 
-<body style="width: 98%">
-  <div class="layout">
+<body style="width: 97%">
+  <div class=" layout">
     <label class="nav">
       <span>
         <a href="./MenuPrincipal.html">Pagina Principal</a>
@@ -46,31 +46,35 @@
           <input class="flexsearch--input" type="search" id="rfcSearch" placeholder="Buscar Cliente">
         </div>
         <input class="flexsearch--submit" type="submit" value="&#10140;" onclick="Buscar()" />
+        <!--<button type="button" onclick="buscar()">Buscar</button>-->
       </form>
     </div>
   </div>
+
   <div style="text-align: right;"><a href="./Modificar Documentos presentados.html">Modificar documentos<br>presentados</a></div>
+  <scroll-container>
+    <div class="datagrid">
+      <table id="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Clave</th>
+            <th>Tipo</th>
+            <th>Documentos</th>
+            <th>Contador</th>
+            <th>Cuenta bancaria</th>
+          </tr>
+        </thead>
+        <tbody>
+  </scroll-container>
 
-  <div class="datagrid">
-    <table id="table">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Clave</th>
-          <th>Tipo</th>
-          <th>Documentos</th>
-          <th>Contador</th>
-          <th>Cuenta bancaria</th>
-        </tr>
-      </thead>
-      <tbody>
-
-
-      </tbody>
-    </table>
+  </tbody>
+  </table>
+  </div>
   </div>
 </body>
 <script src="../Assets/JavaScript/Carpeta.js"></script>
+
 <script src="../Assets/JavaScript/agregarDatos.js"></script>
 
 </html>

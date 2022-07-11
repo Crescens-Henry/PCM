@@ -2,8 +2,7 @@ const conexion = require('../conectar.js');
 
 const ConsultarCarpetas = () => { //! metodo de consulta -- importante!
 
-    $query = `SELECT cliente.nombreComCliente, cliente.rfc, cliente.tipo,carpeta.descDocumentos, contador.nombreComContador, carpeta.cuentaBancaria  FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador;
-`;
+    $query = `SELECT cliente.nombreComCliente, cliente.rfc, cliente.tipo,carpeta.descDocumentos, contador.nombreComContador, carpeta.cuentaBancaria  FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador;`;
  // instruccion SQL
     let tablaCarpetas = document.getElementById("table");
     conexion.query($query, function (err, rows) {
@@ -42,4 +41,3 @@ const ConsultarCarpetas = () => { //! metodo de consulta -- importante!
     })
 }
 document.addEventListener('DOMContentLoaded', ConsultarCarpetas,false)// inicializa la tabla
-

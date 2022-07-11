@@ -13,9 +13,16 @@
     <div class="container-1">
         <div style="text-align: center;" class="top"> Agregar Contador</div> <br>
         <label class="label-1"><img class="plain-svg-1" class="rectangle-1" src="../Assets/IMAGENES/usuario.png"><input id="nombre" placeholder="Nombre completo"></label><br><br>
-        <input id="rango" placeholder="Rango"><br><br>
+
+        <select name="" id="rango">
+            <option value="Fisica - Pequeña">Fisica - Pequeña</option>
+            <option value="Fisica - Extensa">Fisica - Extensa</option>
+            <option value="Moral - Extensa">Moral - Extensa</option>
+            <option value="Moral - Pequeña">Moral - Pequeña</option>
+        </select>
+        <br><br>
         <label class="label-1"><img class="plain-svg-1" class="rectangle-1" src="../Assets/IMAGENES/contrasena.png"><input type="password" id="password" placeholder="Contraseña"></label><br><br>
-        <button id="button-S" type="submit" onclick="RegistrarContador()"><a href="../entrada.html">Registrarse</a></button>
+        <button id="button-S" type="submit" onclick="RegistrarContador()"><a>Registrarse</a></button>
     </div>
 </body>
 <script src="../Assets/JavaScript/agregarDatos.js"></script>

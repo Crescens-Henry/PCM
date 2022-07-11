@@ -1,6 +1,7 @@
+const {default: Swal} = require('sweetalert2');
 const conexion = require('../conectar.js');
 
-const RegistrarContador = () => {
+const RegistrarContador = () => {//* listo
     var nombre = document.getElementById("nombre").value;
     var rango = document.getElementById("rango").value;
     var password = document.getElementById("password").value;
@@ -36,14 +37,14 @@ const RegistrarContador = () => {
         }
     });
 }
-const RegistrarCliente = () => {
+const RegistrarCliente = () => {// ? en progreso
     var nombre = document.getElementById("nombreCliente").value;
     var rfc = document.getElementById("claveRFC").value;
     var tipo = document.getElementById("tipo").value;
     //Instruccion SQL
     
     //! debemo extraer por defecto el id de contador para que se asigne automaticamente a usuario cliente
-    $query = `INSERT INTO cliente (id_cliente,nombreComCliente,rfc,tipo,contador_id_contador) VALUES ('','${nombre}','${rfc}','${tipo}','${contador}')`;
+    $query = `INSERT INTO cliente (id_cliente,nombreComCliente,rfc,tipo,contador_id_contador) VALUES ('','${nombre}','${rfc}','${tipo}','10005')`;
     conexion.query($query, function (err) {
         if (err) {
             console.log("error en el query");
@@ -68,12 +69,12 @@ const RegistrarCliente = () => {
 
             })
             setTimeout(() => {
-                window.location.href = "/HTML/Carpetas.html";
+                window.location.href = "Carpetas.html";
             }, 2000);
         }
     });
 }
-const RegistrarPalabras = () => {
+const RegistrarPalabras = () => {//* listo
     var palabra = document.getElementById("palabra").value;
     var concepto = document.getElementById("concepto").value;
     //  Instruccion SQL
@@ -108,9 +109,10 @@ const RegistrarPalabras = () => {
     });
 }
 
-function Buscar() {
+function Buscar() {// todo:sobre poner tabla
     var rfc = document.getElementById("rfcSearch").value;
-    $query = `SELECT cliente.nombreComCliente, cliente.rfc, cliente.tipo, carpeta.descDocumentos, contador.nombreComContador, carpeta.cuentaBancaria FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador where rfc ='${rfc}';`
+
+    $query = `SELECT cliente.nombreComCliente, cliente.rfc, cliente.tipo, carpeta.descDocumentos, contador.nombreComContador, carpeta.cuentaBancaria FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador where cliente.rfc ='${rfc}';`
     //SELECT cliente.nombreCom, cliente.rfc, cliente.tipo, contador.nombreCom, carpeta.cuentaBancaria, carpeta.descDocumentos FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador;
     let tablaR = document.getElementById("table");
     conexion.query($query, function (err, rows) {
