@@ -159,7 +159,7 @@ button.addEventListener('click', () => {
         }
     }
     return -1;
-}*/
+}
 
 const RegistrarContador = () => {
     var nombre = document.getElementById("nombre").value;
@@ -196,7 +196,7 @@ const RegistrarContador = () => {
             }, 2000);
         }
     });
-}
+}*/
 /*const Registro=()=>{
         listaUsuarios=JSON.parse(localStorage.getItem("lista"));
         let correo= document.getElementById("txtCorreo").value;// mando a llamar los datos 

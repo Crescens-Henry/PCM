@@ -21,7 +21,7 @@ const ConsultarCarpetas = () => { //! metodo de consulta -- importante!
                 var celdaTipo = newRow.insertCell(3);
                 var celdaNombreContador = newRow.insertCell(4);
                 var celdaCuenta = newRow.insertCell(5);
-
+                
                 var textoNombre = document.createTextNode(rows[i].nombreComCliente);
                 var textClave = document.createTextNode(rows[i].rfc);
                 var textDocumentos = document.createTextNode(rows[i].tipo);

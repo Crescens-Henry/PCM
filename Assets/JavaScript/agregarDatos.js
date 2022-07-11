@@ -109,9 +109,8 @@ const RegistrarPalabras = () => {//* listo
     });
 }
 
-function Buscar() {// todo:sobre poner tabla
+function Buscar() {
     var rfc = document.getElementById("rfcSearch").value;
-
     $query = `SELECT cliente.nombreComCliente, cliente.rfc, cliente.tipo, carpeta.descDocumentos, contador.nombreComContador, carpeta.cuentaBancaria FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador where cliente.rfc ='${rfc}';`
     //SELECT cliente.nombreCom, cliente.rfc, cliente.tipo, contador.nombreCom, carpeta.cuentaBancaria, carpeta.descDocumentos FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador;
     let tablaR = document.getElementById("table");
@@ -122,8 +121,8 @@ function Buscar() {// todo:sobre poner tabla
             return;
         } else {
             //Lo que se extrae de la BD, queda guardado en ROWS que se vuelve una lista de objetos
-            var long = rows.length; //Se obtiene el tamaño de la lista
-            for (i = 0; i < long; i++) { //Se utiliza para recorrer la lista
+            //var long = rows.length; //Se obtiene el tamaño de la lista
+            //for (i = 0; i < long; i++) { ///Se utiliza para recorrer la lista
                 //cadena += rows[i].id + ' ' + rows[i].nombre +  ' ' + rows[i].contraseña +'\n';//Registro
                 var newRow = tablaR.insertRow(-1);
                 var celdaNombreCliente = newRow.insertCell(0);
@@ -145,7 +144,7 @@ function Buscar() {// todo:sobre poner tabla
                 celdaTipo.appendChild(textoTipo);
                 celdaNombreContador.appendChild(textoNombreContador);
                 celdaCuenta.appendChild(textoCuenta);
-            }
+            //}
             //alert(cadena);
         }
     });
