@@ -103,49 +103,8 @@ const RegistrarPalabras = () => {//* listo
 
             })
             setTimeout(() => {
-                window.location.href = "/HTML/Diccionario.html";
+                window.location.href = "Diccionario.html";
             }, 2000);
-        }
-    });
-}
-
-function Buscar() {
-    var rfc = document.getElementById("rfcSearch").value;
-    $query = `SELECT cliente.nombreComCliente, cliente.rfc, cliente.tipo, carpeta.descDocumentos, contador.nombreComContador, carpeta.cuentaBancaria FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador where cliente.rfc ='${rfc}';`
-    //SELECT cliente.nombreCom, cliente.rfc, cliente.tipo, contador.nombreCom, carpeta.cuentaBancaria, carpeta.descDocumentos FROM carpeta INNER JOIN cliente ON carpeta.cliente_id_cliente = cliente.id_cliente INNER JOIN contador ON cliente.contador_id_contador = contador.id_contador;
-    let tablaR = document.getElementById("table");
-    conexion.query($query, function (err, rows) {
-        if (err) {
-            console.log("error en el query");
-            console.log(err);
-            return;
-        } else {
-            //Lo que se extrae de la BD, queda guardado en ROWS que se vuelve una lista de objetos
-            //var long = rows.length; //Se obtiene el tamaño de la lista
-            //for (i = 0; i < long; i++) { ///Se utiliza para recorrer la lista
-                //cadena += rows[i].id + ' ' + rows[i].nombre +  ' ' + rows[i].contraseña +'\n';//Registro
-                var newRow = tablaR.insertRow(-1);
-                var celdaNombreCliente = newRow.insertCell(0);
-                var celdaRFC = newRow.insertCell(1);
-                var celdaDocumentos = newRow.insertCell(2);
-                var celdaTipo = newRow.insertCell(3);
-                var celdaNombreContador = newRow.insertCell(4);
-                var celdaCuenta = newRow.insertCell(5);
-
-                var textoNombreCliente = document.createTextNode(rows[i].nombreComCliente);
-                var textoRFC = document.createTextNode(rows[i].rfc);
-                var textoDocumentos = document.createTextNode(rows[i].descDocumentos);
-                var textoTipo = document.createTextNode(rows[i].tipo);
-                var textoNombreContador = document.createTextNode(rows[i].nombreComContador);
-                var textoCuenta = document.createTextNode(rows[i].cuentaBancaria);
-                celdaNombreCliente.appendChild(textoNombreCliente);
-                celdaRFC.appendChild(textoRFC);
-                celdaDocumentos.appendChild(textoDocumentos);
-                celdaTipo.appendChild(textoTipo);
-                celdaNombreContador.appendChild(textoNombreContador);
-                celdaCuenta.appendChild(textoCuenta);
-            //}
-            //alert(cadena);
         }
     });
 }

@@ -6,22 +6,6 @@ const pass = document.querySelector('#password');
 const button = document.querySelector('#button');
 
 
-//let users;
-
-/*let usersPreCargados = [{ user: 'majocosta', pass: '1234', nombre: 'María José Domínguez Costa' }, 
-{ user: 'Crescencio', pass: '5678', nombre: 'Crescencio Perez Santiz' }, 
-{ user: 'PaolaPenagos', pass: '9876', nombre: 'Paola Anaray Canseco Penagos' }];
-
-if (localStorage.getItem('registro')) {
-    users = usersPreCargados;
-    let registro = JSON.parse(localStorage.getItem('registro'));
-    let newArray = users.concat(registro);
-    users = newArray;
-} else {
-    users = usersPreCargados;
-}*/
-
-
 button.addEventListener('click', () => {
     var nombre = contador.value;
     let password = pass.value;

@@ -14,6 +14,7 @@
   text-align: center;
   align-items: center;
 }
+
 .top {
   border-color: #000000;
   border-width: 2px;
@@ -139,6 +140,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 label,
 a {
   cursor: pointer;
@@ -402,4 +404,14 @@ scroll-container {
   overflow-x: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
+}
+/**scroll personalizado*/
+/*?primero se accede a la barra y se le da el tamaño entre otras propiedades*/
+scroll-container::-webkit-scrollbar {
+  width: 7px;
+}
+/*?despues de edita la barra que baja y sube con propiedades X*/
+scroll-container::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 5px;
 }
