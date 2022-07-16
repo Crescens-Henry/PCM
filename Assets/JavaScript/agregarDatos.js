@@ -41,6 +41,7 @@ const RegistrarCliente = () => {// ? en progreso
     var nombre = document.getElementById("nombreCliente").value;
     var rfc = document.getElementById("claveRFC").value;
     var tipo = document.getElementById("tipo").value;
+    var documentos = document.getElementById("documentos").value;
     //Instruccion SQL
     
     //! debemo extraer por defecto el id de contador para que se asigne automaticamente a usuario cliente

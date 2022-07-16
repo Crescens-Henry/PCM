@@ -5,7 +5,7 @@ const contador = document.querySelector('#txtContador');
 const pass = document.querySelector('#password');
 const button = document.querySelector('#button');
 
-
+ 
 button.addEventListener('click', () => {
     var nombre = contador.value;
     let password = pass.value;
@@ -16,7 +16,7 @@ button.addEventListener('click', () => {
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 2000,
+            timer: 1500,
             timerProgressBar: true,
             didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -34,7 +34,7 @@ button.addEventListener('click', () => {
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 2000,
+            timer: 1500,
             timerProgressBar: true,
             didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -55,8 +55,8 @@ button.addEventListener('click', () => {
                 console.log(err);
                 return;
             } else if (rows.length != 0) { //'&& contraseña ='${pass}
-                console.log(password)
-                console.log(rows[0].contraseña)
+                //console.log(password)
+                //console.log(rows[0].contraseña)
 
                 if (rows[0].contraseña == password) {
                     err = false;
@@ -64,7 +64,7 @@ button.addEventListener('click', () => {
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
-                        timer: 2000,
+                        timer: 1500,
                         timerProgressBar: true,
                         didOpen: (toast) => {
                             toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -79,14 +79,14 @@ button.addEventListener('click', () => {
                     })
                     setTimeout(() => {
                         window.location.href = "HTML/MenuPrincipal.html";
-                    }, 2000);
+                    }, 1500);
 
                 } else {
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
-                        timer: 2000,
+                        timer: 1500,
                         timerProgressBar: true,
                         didOpen: (toast) => {
                             toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -104,7 +104,7 @@ button.addEventListener('click', () => {
                     toast: true,
                     position: 'top-end',
                     showConfirmButton: false,
-                    timer: 2000,
+                    timer: 1500,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -162,7 +162,7 @@ const RegistrarContador = () => {
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
-                timer: 2000,
+                timer: 1500,
                 timerProgressBar: true,
                 didOpen: (toast) => {
                     toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -177,7 +177,7 @@ const RegistrarContador = () => {
             })
             setTimeout(() => {
                 window.location.href = "./entrada.html";
-            }, 2000);
+            }, 1500);
         }
     });
 }*/
