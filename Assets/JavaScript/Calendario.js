@@ -85,11 +85,11 @@ btnFecha.addEventListener('click', () => {
 
 //revisar si funciona bien 
 const actualizarFecha = () => { 
-    let nombreCliente = document.getElementById("nombreCliente").value;
-    let id_cliente = `select id_cliente from cliente where nombreCom = '${nombreCliente}'`;//revisar bien esta linea 
-    let fechaActualizada = document.getElementById("fechaActualizada").value;
+    let nombreCliente = document.getElementById("Cliente").value;
+    let id_cliente = `select id_cliente from cliente where nombreCom = '${Cliente}'`;//revisar bien esta linea 
+    let fechaActualizada = document.getElementById("Nueva_fecha").value;
     //Instruccion SQL
-    $query = `UPDATE calendario SET fechaDeclaracion='${fechaActualizada}' where cliente_id_cliente='${id_cliente}'`;
+    $query = `UPDATE calendario SET fechaDeclaracion='${Nueva_fecha}' where cliente_id_cliente='${id_cliente}'`;
     conexion.query($query, function (err) {
         if (err) {
             console.log("error en el query");
