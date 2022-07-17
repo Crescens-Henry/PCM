@@ -1,16 +1,23 @@
-const {default: Swal} = require('sweetalert2');
-const {query}= require('./conectar');
+const {
+    default: Swal
+} = require('sweetalert2');
+const {
+    query
+} = require('./conectar');
 var conexion = require('./conectar');
 const contador = document.querySelector('#txtContador');
 const pass = document.querySelector('#password');
 const button = document.querySelector('#button');
 
- 
+function valorContador() {
+    return contador.value;
+}
+
+
 button.addEventListener('click', () => {
     var nombre = contador.value;
     let password = pass.value;
     let err = true;
-
     if (nombre == '') {
         const Toast = Swal.mixin({
             toast: true,
@@ -48,7 +55,7 @@ button.addEventListener('click', () => {
 
         })
     } else {
-        $query = `select * from contador where nombreComContador ='${nombre}'`;
+        $query = `select * from contador where nombreComContador ='${nombre}'`; //busca
         conexion.query($query, function (err, rows) {
             if (err) {
                 console.log("error en el query");

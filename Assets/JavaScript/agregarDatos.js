@@ -1,7 +1,10 @@
-const {default: Swal} = require('sweetalert2');
+const {
+    default: Swal
+} = require('sweetalert2');
 const conexion = require('../conectar.js');
 
-const RegistrarContador = () => {//* listo
+
+const RegistrarContador = () => { //* listo
     var nombre = document.getElementById("nombre").value;
     var rango = document.getElementById("rango").value;
     var password = document.getElementById("password").value;
@@ -37,15 +40,17 @@ const RegistrarContador = () => {//* listo
         }
     });
 }
-const RegistrarCliente = () => {// ? en progreso
+const RegistrarCliente = () => { // ? en progreso
     var nombre = document.getElementById("nombreCliente").value;
     var rfc = document.getElementById("claveRFC").value;
-    var tipo = document.getElementById("tipo").value;
-    var documentos = document.getElementById("documentos").value;
+    var tipo = document.getElementById("tipo").value; //? se debe seleccionar por defecto
+    var documentos = document.getElementById("documentos").value; // * esto va en la tabla de carpetas
     //Instruccion SQL
-    
+
     //! debemo extraer por defecto el id de contador para que se asigne automaticamente a usuario cliente
-    $query = `INSERT INTO cliente (id_cliente,nombreComCliente,rfc,tipo,contador_id_contador) VALUES ('','${nombre}','${rfc}','${tipo}','10005')`;
+    $query = `INSERT INTO cliente (id_cliente,nombreComCliente,rfc,tipo,contador_id_contador) VALUES ('','${nombre}','${rfc}','${tipo}','10005')`; //? investigar como traer el dato de contador como por defecto desde que se inicia sesion
+    // todo: sentencia query mediante nombre completo obtener el id 
+    
     conexion.query($query, function (err) {
         if (err) {
             console.log("error en el query");
@@ -74,8 +79,9 @@ const RegistrarCliente = () => {// ? en progreso
             }, 2000);
         }
     });
+    //! creamos el apartado de carpeta con los datos que utiliza el join (tabla cliente, contador y carpeta) insertar por separado pero estando vinculados cada uno 
 }
-const RegistrarPalabras = () => {//* listo
+const RegistrarPalabras = () => { //* listo
     var palabra = document.getElementById("palabra").value;
     var concepto = document.getElementById("concepto").value;
     //  Instruccion SQL

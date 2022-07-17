@@ -82,3 +82,40 @@ btnFecha.addEventListener('click', () => {
         }
     })
 });
+
+//revisar si funciona bien 
+const actualizarFecha = () => { 
+    let nombreCliente = document.getElementById("nombreCliente").value;
+    let id_cliente = `select id_cliente from cliente where nombreCom = '${nombreCliente}'`;
+    let fechaActualizada = document.getElementById("fechaActualizada").value;
+    //Instruccion SQL
+    $query = `UPDATE calendario SET fechaDeclaracion='${fechaActualizada}' where cliente_id_cliente='${id_cliente}'`;
+    conexion.query($query, function (err) {
+        if (err) {
+            console.log("error en el query");
+            console.log(err);
+            return;
+        } else {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Fecha de próxima declaración actualizada'
+
+            })
+            setTimeout(() => {
+                window.location.href = "../calendario.html";
+            }, 2000);
+        }
+    });
+}
