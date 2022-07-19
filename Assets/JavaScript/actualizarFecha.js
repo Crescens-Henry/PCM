@@ -19,7 +19,7 @@ function actualizarFecha() {
             for (i = 0; i < long; i++) {
                 var valorId = Number(rows[0].id_cliente);
 
-                console.log(valorId);//! PASAR A VALOR PRIMITIVO
+                console.log(valorId);
                 //Instruccion SQL
                 $query = `UPDATE calendario SET fechaDeclaracion='${fechaActualizada}' where cliente_id_cliente='${valorId}'`;
                 conexion.query($query, function (err) {
