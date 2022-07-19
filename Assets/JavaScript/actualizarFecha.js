@@ -6,7 +6,7 @@ const {
 function actualizarFecha() {
     let nombreCliente = document.getElementById("Cliente").value;
     let fechaActualizada = document.getElementById("Nueva_fecha").value;
-console.log(fechaActualizada);
+    console.log(fechaActualizada);
     $temp = `select id_cliente from cliente where nombreComCliente = '${nombreCliente}'`; //revisar bien esta linea 
 
     conexion.query($temp, function (err, rows) {
@@ -17,10 +17,9 @@ console.log(fechaActualizada);
         } else {
             var long = rows.length;
             for (i = 0; i < long; i++) {
-                var valorId = document.createTextNode(rows[0].id_cliente);
-                
-                
-                console.log(valorId.replace(/" /g,''));
+                var valorId = Number(rows[0].id_cliente);
+
+                console.log(valorId);//! PASAR A VALOR PRIMITIVO
                 //Instruccion SQL
                 $query = `UPDATE calendario SET fechaDeclaracion='${fechaActualizada}' where cliente_id_cliente='${valorId}'`;
                 conexion.query($query, function (err) {

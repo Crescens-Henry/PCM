@@ -24,6 +24,7 @@ const ConsultarCarpetas = () => { //* listo
                 var celdaTipo = newRow.insertCell(3);
                 var celdaNombreContador = newRow.insertCell(4);
                 var celdaCuenta = newRow.insertCell(5);
+                var celdaLocalizacion = newRow.insertCell(6);
                 
                 var textoNombre = document.createTextNode(rows[i].nombreComCliente);
                 var textClave = document.createTextNode(rows[i].rfc);
@@ -31,6 +32,7 @@ const ConsultarCarpetas = () => { //* listo
                 var textTipo = document.createTextNode(rows[i].descDocumentos);
                 var textContador = document.createTextNode(rows[i].nombreComContador);
                 var textCuentaBancaria = document.createTextNode(rows[i].cuentaBancaria);
+                var textLocalizacion = document.createTextNode(rows[i].localizacion);
 
                 celdaNombreCliente.appendChild(textoNombre);
                 celdaClave.appendChild(textClave);
@@ -38,6 +40,7 @@ const ConsultarCarpetas = () => { //* listo
                 celdaTipo.appendChild(textTipo);
                 celdaNombreContador.appendChild(textContador);
                 celdaCuenta.appendChild(textCuentaBancaria);
+                celdaLocalizacion.appendChild(textLocalizacion);
             }
             //alert(cadena)
         }
@@ -84,6 +87,7 @@ btnBuscar.addEventListener('click',()=>{
                 var celdaTipo = newRow.insertCell(3);
                 var celdaNombreContador = newRow.insertCell(4);
                 var celdaCuenta = newRow.insertCell(5);
+                var celdaLocalizacion = newRow.insertCell(6);
                 
                 var textoNombre = document.createTextNode(rows[0].nombreComCliente);
                 var textClave = document.createTextNode(rows[0].rfc);
@@ -91,6 +95,7 @@ btnBuscar.addEventListener('click',()=>{
                 var textTipo = document.createTextNode(rows[0].descDocumentos);
                 var textContador = document.createTextNode(rows[0].nombreComContador);
                 var textCuentaBancaria = document.createTextNode(rows[0].cuentaBancaria);
+                var textLocalizacion = document.createTextNode(rows[0].localizacion);
 
                 celdaNombreCliente.appendChild(textoNombre);
                 celdaClave.appendChild(textClave);
@@ -98,6 +103,7 @@ btnBuscar.addEventListener('click',()=>{
                 celdaTipo.appendChild(textTipo);
                 celdaNombreContador.appendChild(textContador);
                 celdaCuenta.appendChild(textCuentaBancaria);
+                celdaLocalizacion.appendChild(textLocalizacion);
         }
     })
 });

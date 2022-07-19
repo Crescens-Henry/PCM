@@ -81,6 +81,5 @@ function buscarFecha() {
         }
     })
 };
-  
 
 //revisar si funciona bien 
