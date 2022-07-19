@@ -43,7 +43,9 @@ const RegistrarContador = () => { //* listo
 const RegistrarCliente = () => { // ? en progreso
     var nombre = document.getElementById("nombreCliente").value;
     var rfc = document.getElementById("claveRFC").value;
+    var cuentaBancaria = document.getElementById("cuentaBamcaria").value;
     var tipo = document.getElementById("tipo").value; //? se debe seleccionar por defecto
+    var localizacion = document.getElementById("localizacion").value;
     var documentos = document.getElementById("documentos").value; // * esto va en la tabla de carpetas
     //Instruccion SQL
 
