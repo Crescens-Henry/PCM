@@ -276,7 +276,7 @@ function ConsultarDiccionario(){
                 arbolBinario.Agregar(rows[i].palabra,rows[i].concepto);
             }
                 arbolBinario.inOrder();
-                for ( i = 0; i < datos.length; i++) {
+            for ( i = 0; i < datos.length; i++) {
                 var newRowDiccionarnio = tablaDiccionario.insertRow(-1);
                 var celdaPalabra = newRowDiccionarnio.insertCell(0);
                 var celdaConcepto = newRowDiccionarnio.insertCell(1);
