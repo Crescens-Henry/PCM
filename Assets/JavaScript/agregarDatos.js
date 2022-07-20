@@ -1,6 +1,4 @@
-const {
-    default: Swal
-} = require('sweetalert2');
+const {default: Swal} = require('sweetalert2');
 const conexion = require('../conectar.js');
 
 
