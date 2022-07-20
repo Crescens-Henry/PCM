@@ -1,9 +1,9 @@
 const {
     default: Swal
-} = require('sweetalert2');
-const conexion = require('../conectar.js');
+} = require('sweetalert2');// llamada a la libreria de pop pups
+const conexion = require('../conectar.js');// llamada a la conexion de BSD
 
-
+//* funcion para registrar usuario contador utilizada en entrada como opcinal
 const RegistrarContador = () => { //* listo
     var nombre = document.getElementById("nombre").value;
     var rango = document.getElementById("rango").value;
@@ -40,6 +40,7 @@ const RegistrarContador = () => { //* listo
         }
     });
 }
+//* funcion para registrar usuario cliente utilizada en AgregarCliente.html
 const RegistrarCliente = () => { // ? en progreso
     var nombre = document.getElementById("nombreCliente").value;
     var rfc = document.getElementById("claveRFC").value;
@@ -83,17 +84,19 @@ const RegistrarCliente = () => { // ? en progreso
     });
     //! creamos el apartado de carpeta con los datos que utiliza el join (tabla cliente, contador y carpeta) insertar por separado pero estando vinculados cada uno 
 }
+//* funcion para registrar palabras utilizada en agregarPalabra.html
 const RegistrarPalabras = () => { //* listo
     var palabra = document.getElementById("palabra").value;
     var concepto = document.getElementById("concepto").value;
     //  Instruccion SQL
     $query = `INSERT INTO diccionario (palabra,concepto) VALUES ('${palabra}','${concepto}')`;
-    conexion.query($query, function (err) {
+    conexion.query($query, function (err) {//! ejecutamos el query e informamos posibilidad de error
         if (err) {
             console.log("error en el query");
             console.log(err);
             return;
         } else {
+            // * inicio de pop
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -114,6 +117,7 @@ const RegistrarPalabras = () => { //* listo
             setTimeout(() => {
                 window.location.href = "Diccionario.html";
             }, 2000);
+            //* fin de pop
         }
     });
 }

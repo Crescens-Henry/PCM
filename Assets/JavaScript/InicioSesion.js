@@ -9,9 +9,6 @@ const contador = document.querySelector('#txtContador');
 const pass = document.querySelector('#password');
 const button = document.querySelector('#button');
 
-function valorContador() {
-    return contador.value;
-}
 
 
 button.addEventListener('click', () => {

@@ -1,8 +1,9 @@
-const conexion = require('../conectar.js');
+const conexion = require('../conectar.js');// llamada a js de conexion a BSD
 const {
     default: Swal
-} = require('sweetalert2');
+} = require('sweetalert2');// Llamada a la libreria para los pop pups
 
+// funcion de actualizacion de fecha para usuario cliente
 function actualizarFecha() {
     let nombreCliente = document.getElementById("Cliente").value;
     let fechaActualizada = document.getElementById("Nueva_fecha").value;
