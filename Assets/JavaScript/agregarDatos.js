@@ -1,23 +1,22 @@
-const {
-    default: Swal
-} = require('sweetalert2');// llamada a la libreria de pop pups
+const {default: Swal} = require('sweetalert2');// llamada a la libreria de pop pups
 const conexion = require('../conectar.js');// llamada a la conexion de BSD
 
 //* funcion para registrar usuario contador utilizada en entrada como opcinal
 const RegistrarContador = () => { //* listo
+    //EXTRACCION DEL VALOR INGRESADO EL EN HTML
     var nombre = document.getElementById("nombre").value;
     var rango = document.getElementById("rango").value;
     var password = document.getElementById("password").value;
     //Instruccion SQL
     $query = `INSERT INTO contador (id_contador,nombreComContador,rango,contraseña) 
-    VALUES ('','${nombre}','${rango}','${password}')`;
+    VALUES ('','${nombre}','${rango}','${password}')`; //INGRESO DE DATOS A LA TABLA
     conexion.query($query, function (err) {
-        if (err) {
+        if (err) {//IINSTRUCCION EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);
             return;
         } else {
-            const Toast = Swal.mixin({
+            const Toast = Swal.mixin({//CREACION DEL POPPOP
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
@@ -34,7 +33,7 @@ const RegistrarContador = () => { //* listo
                 title: 'Datos guardados'
 
             })
-            setTimeout(() => {
+            setTimeout(() => {//REDIRECION DESPUES DE CIERTO TIEMPO
                 window.location.href = "../entrada.html";
             }, 2000);
         }
@@ -55,12 +54,12 @@ const RegistrarCliente = () => { // ? en progreso
     // todo: sentencia query mediante nombre completo obtener el id 
     
     conexion.query($query, function (err) {
-        if (err) {
+        if (err) {//INSTRUCCION EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);
             return;
         } else {
-            const Toast = Swal.mixin({
+            const Toast = Swal.mixin({//POPPOP
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
@@ -77,7 +76,7 @@ const RegistrarCliente = () => { // ? en progreso
                 title: 'Datos guardados'
 
             })
-            setTimeout(() => {
+            setTimeout(() => {//REDIRECCION 
                 window.location.href = "Carpetas.html";
             }, 2000);
         }

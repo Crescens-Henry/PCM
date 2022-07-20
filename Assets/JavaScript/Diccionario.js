@@ -1,6 +1,6 @@
-const conexion = require('../conectar.js');
-const btnBuscarPalabra=document.querySelector('#BuscarPalabra');
-const {default: Swal} = require('sweetalert2');
+const conexion = require('../conectar.js');//CONEXION A BASE DE DATOS
+const btnBuscarPalabra=document.querySelector('#BuscarPalabra'); //CONSTANTE PARA BOTON
+const {default: Swal} = require('sweetalert2');//LIBRERIA DE POPPOP´S
 
 class Calendario {// objeto usuario a registrar por el contador
     constructor(palabra, concepto) {
@@ -24,7 +24,7 @@ class Arbol {
         this.raiz = null
     }
 
-    isEmpty() {
+    isEmpty() {//ESTA VACIO
         return this.raiz === null
     }
 
@@ -60,7 +60,7 @@ class Arbol {
 
 
     Buscar(llave) { //! funcion de busqueda
-        if (this.isEmpty()) {
+        if (this.isEmpty()) {// SI ESTA VACIO
             return null
         }
 
@@ -197,7 +197,6 @@ class Arbol {
         console.log('llave: ' + Nodo.llave + '\t', Nodo.obj)
     }
 }
-//! se declaran los valores que contendra el arbol binario
 var arbolBinario = new Arbol() // madno a llamar el arbol
 // declaro mis objetos
 /*var clienteUsuario1 = new UsuarioCliente(1, 'Crescencio', '1001')
@@ -226,7 +225,7 @@ arbolBinario.Agregar(clienteUsuario9.nombre, clienteUsuario9)
 arbolBinario.Agregar(clienteUsuario10.nombre, clienteUsuario10)
 arbolBinario.Agregar(clienteUsuario11.nombre, clienteUsuario11)
 arbolBinario.Agregar(clienteUsuario12.nombre, clienteUsuario12)*/
-
+//LISTAS DE OBJETOS
 let datos=[];
 let palabra=[];
 let concepto=[];
@@ -260,23 +259,24 @@ arbolBinario.preOrder()
 console.log('\nIn-Orden:\n')
 arbolBinario.inOrder()
 */
+//FUNCION PARA MOSTRAR EL DICCIONARIO*/
 function ConsultarDiccionario(){
     //var cadena
     $query = 'select palabra, concepto FROM diccionario'; // instruccion SQL
     conexion.query($query, function (err, rows) {
-        if (err) {
+        if (err) {//INSTRUCCION EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);
             return;
-        } else {
+        } else {//EXITO
             let tablaDiccionario = document.getElementById("tableDiccionario");
             //lo que se extrae de la BD, queda guardado en ROWS que se vuelve lista de objetos
 // se obtiene el tamano de la lista
-            for ( i = 0; i < rows.length; i++) {
-                arbolBinario.Agregar(rows[i].palabra,rows[i].concepto);
+            for ( i = 0; i < rows.length; i++) {//SE REPITE HASTA EL LARGO DE LA LISTA
+                arbolBinario.Agregar(rows[i].palabra,rows[i].concepto);//SE AGRGAN AL ARBOL
             }
-                arbolBinario.inOrder();
-            for ( i = 0; i < datos.length; i++) {
+                arbolBinario.inOrder();//SE LLAMA EL INORDEN
+            for ( i = 0; i < datos.length; i++) {//CREACION DE LA TABLA A MOSTRAR
                 var newRowDiccionarnio = tablaDiccionario.insertRow(-1);
                 var celdaPalabra = newRowDiccionarnio.insertCell(0);
                 var celdaConcepto = newRowDiccionarnio.insertCell(1);
@@ -292,7 +292,7 @@ function ConsultarDiccionario(){
 }
 ConsultarDiccionario();
 
-
+/*BOTON BUSCAR */
 btnBuscarPalabra.addEventListener('click',()=>{
     let palabra = document.getElementById('palabraBuscar').value;
     let query = `SELECT * FROM diccionario WHERE palabra ='${palabra}';`;
@@ -300,12 +300,12 @@ btnBuscarPalabra.addEventListener('click',()=>{
     let tablaDiccionario = document.getElementById("tableDiccionario");
     tablaDiccionario.innerHTML='';
     conexion.query(query, function (err, rows) {
-        if (err) {
+        if (err) {//INSTRUCCION EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);
             return;
-        } else if (rows.length == 0) {
-          const Toast = Swal.mixin({
+        } else if (rows.length == 0) {//
+          const Toast = Swal.mixin({//POP
             toast: true,
             position: 'top-end',
             showConfirmButton: false,

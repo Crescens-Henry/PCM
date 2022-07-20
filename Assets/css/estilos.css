@@ -16,6 +16,7 @@
 }
 
 .top {
+  /*Parte de arriba del fomulario*/
   border-color: #000000;
   border-width: 2px;
   border-style: solid;
@@ -28,6 +29,7 @@
 a {
   color: #ffffff;
 }
+/*CREACION DEL FORMTO DE LA BARRA DE BUSQUEDA*/
 .flexsearch--wrapper {
   height: auto;
   width: auto;
@@ -155,7 +157,7 @@ a {
 :hover {
   border-bottom-color: #9b59b6;
 }
-
+/*FORMATO DEL MENU DE ARRIBA DE CADA PAGINA*/
 .layout {
   display: grid;
   width: 100%;
@@ -229,6 +231,7 @@ input[type="radio"]:checked + .page {
   opacity: 1;
   transform: translateY(0px);
 }
+/*FORMATO DE LAS TABLAS QUE SE MUESTRAN*/
 .datagrid table {
   border-collapse: separate;
   text-align: center;
@@ -397,6 +400,7 @@ input[type="radio"]:checked + .page {
 .dropdown:hover .dropdown-child {
   display: block;
 }
+/*FORMATO DEL SCROOL PARA PODER MOSTRAR VARIOS DATOS*/
 scroll-container {
   display: block;
   width: 100%;
