@@ -62,10 +62,13 @@ function RegistrarCliente() { // ? en progreso --------
             return;
         } else {
             var long = rows.length;
-            for (let i = 0; i < long; i++) {
+            for (let i = 0; i <= long; i++) {
+                
                 var valorId = Number(rows[i].id_contador);
-
+                var ciclo = i;
+                console.log(ciclo);
                 console.log("dentro del for");
+
                 $query1 = `INSERT INTO cliente (id_cliente,nombreComCliente,rfc,tipo,contador_id_contador) VALUES ('','${nombre}','${rfc}','${tipo}','${valorId}')`;
                 conexion.query($query1, function (err) {
                         if (err) { //INSTRUCCION EN CASO DE ERROR
@@ -103,7 +106,7 @@ function RegistrarCliente() { // ? en progreso --------
                     //! debemo extraer por defecto el id de contador para que se asigne automaticamente a usuario cliente
 
                     //! creamos el apartado de carpeta con los datos que utiliza el join (tabla cliente, contador y carpeta) insertar por separado pero estando vinculados cada uno 
-                );
+                )
             }
         }
     });
