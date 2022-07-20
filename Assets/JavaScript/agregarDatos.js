@@ -40,7 +40,7 @@ const RegistrarContador = () => { //* listo
     });
 }
 //* funcion para registrar usuario cliente utilizada en AgregarCliente.html
-const RegistrarCliente = () => { // ? en progreso
+const RegistrarCliente = () => { // ? en progreso --------
     var nombre = document.getElementById("nombreCliente").value;
     var rfc = document.getElementById("claveRFC").value;
     var cuentaBancaria = document.getElementById("cuentaBamcaria").value;
@@ -48,7 +48,7 @@ const RegistrarCliente = () => { // ? en progreso
     var localizacion = document.getElementById("localizacion").value;
     var documentos = document.getElementById("documentos").value; // * esto va en la tabla de carpetas
     //Instruccion SQL
-
+    //! opcion 2... editar directamente la view para porder insertar datos
     //! debemo extraer por defecto el id de contador para que se asigne automaticamente a usuario cliente
     $query = `INSERT INTO cliente (id_cliente,nombreComCliente,rfc,tipo,contador_id_contador) VALUES ('','${nombre}','${rfc}','${tipo}','10005')`; //? investigar como traer el dato de contador como por defecto desde que se inicia sesion
     // todo: sentencia query mediante nombre completo obtener el id 
