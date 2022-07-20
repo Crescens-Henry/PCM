@@ -6,7 +6,7 @@ btnBorrar.addEventListener('click',()=>{
     let nombreCliente = document.getElementById("nombreB").value;
     console.log(nombreCliente);
     $temp = `select id_cliente from cliente where nombreComCliente = '${nombreCliente}'`; //SE SELECCIONA ID DEL CLIENTE YA QUE ES LA LLAVE PRIMARIA, SE GUARDA EN ALGO PARECIDO AL QUERY
-     conexiEon.query($temp, function (err, rows) {
+     conexion.query($temp, function (err, rows) {
         if (err){//EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);

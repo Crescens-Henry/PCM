@@ -48,6 +48,7 @@ button.addEventListener('click', () => {
         })
     } else {//SI NINGUNO DE LOS DATOS ESTA VACIO
         $query = `select * from contador where nombreComContador ='${nombre}'`; //busca
+        
         conexion.query($query, function (err, rows) {
             if (err) {//EN CASO DE ERROR
                 console.log("error en el query");
@@ -58,6 +59,7 @@ button.addEventListener('click', () => {
                 //console.log(rows[0].contraseña)
 
                 if (rows[0].contraseña == password) {// USUARIO Y CONTRASEÑA IGUAL QUE EN LA BASE DE DATOS
+                    localStorage.setItem("nombre", JSON.stringify(nombre));
                     err = false;
                     const Toast = Swal.mixin({//POP
                         toast: true,
