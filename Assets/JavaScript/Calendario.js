@@ -1,13 +1,13 @@
-const conexion = require('../conectar.js');
-const {default: Swal} = require('sweetalert2');
+const conexion = require('../conectar.js');// CONEXION A LA BASE DE DATOS
+const {default: Swal} = require('sweetalert2');// LIBRERIA PARA LOS POPPOP´S
 
-
+/*FUNCION PARA PODER VER EL CALENDARIO */
 function ConsultarCalendario()  {
     //var cadena;
     $query = 'Select cliente.nombreComCliente, cliente.rfc, calendario.fechaDeclaracion from cliente join calendario on calendario.cliente_id_cliente=cliente.id_cliente'; // instruccion SQL
     let tablaCalendario = document.getElementById("tableConsultar");
     conexion.query($query, function (err, rows) {
-        if (err) {
+        if (err) {//INTRUCCION EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);
             return;
@@ -15,6 +15,7 @@ function ConsultarCalendario()  {
             //lo que se extrae de la BD, queda guardado en ROWS que se vuelve lista de objetos
             var long = rows.length; // se obtiene el tamano de la lista
             for (i = 0; i < long; i++) {
+                /*CREACION DE TABLA PARA EL HTML */
                 var newRowCalendario = tablaCalendario.insertRow(-1);
                 var celdaNombre = newRowCalendario.insertCell(0);
                 var celdaRfc = newRowCalendario.insertCell(1);
@@ -32,21 +33,22 @@ function ConsultarCalendario()  {
         }
     })
 }
-ConsultarCalendario()
-//Boton buscar fecha
+ConsultarCalendario();//RECARGA DE LA PAGINA 
+//Funcion buscar fecha
 function buscarFecha() {
-    let nombre = document.getElementById('nombreSearch').value;
+    let nombre = document.getElementById('nombreSearch').value;// ESTRACCION DE VALOR DE DATO INGRESADO EN HTML
     console.log(nombre);
+    //INSTRUCCION SQL
     let query = `Select cliente.nombreComCliente, cliente.rfc, calendario.fechaDeclaracion from cliente join calendario on calendario.cliente_id_cliente=cliente.id_cliente where nombreComCliente='${nombre}'`;
-    // instruccion SQL
     let tablaCalendario = document.getElementById("tableConsultar");
-    tablaCalendario.innerHTML = '';
+    tablaCalendario.innerHTML = '';// SE VACIA LA TABLA
     conexion.query(query, function (err, rows) {
-        if (err) {
+        if (err) {// INSTRUCCION EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);
             return;
         } else if (rows.length == 0) {
+            /*INICION DE POP EN CASO DE QUE NO ENCUENTRE AL CLIENTE*/
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -64,7 +66,9 @@ function buscarFecha() {
                 title: 'Usuario no encontrado'
 
             })
+            /*FIN DE POP */
         } else { //! resultado en pantalla
+
             //*lo que se extrae de la BD, queda guardado en ROWS que se vuelve lista de objetos
             var newRowCalendario = tablaCalendario.insertRow(-1);
             var celdaNombre = newRowCalendario.insertCell(0);

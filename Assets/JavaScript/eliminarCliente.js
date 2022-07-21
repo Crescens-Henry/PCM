@@ -1,24 +1,29 @@
-const conexion = require('../conectar.js');
-const btnBorrar= document.querySelector('#botonBorrar');
-const {default: Swal} = require('sweetalert2');
+const conexion = require('../conectar.js');//CONEXION A BASE DE DATOS
+const btnBorrar= document.querySelector('#botonBorrar'); // CONSTANTE PARA BOTON
+const {default: Swal} = require('sweetalert2');//LIBRERIA DE POP
+//BOTON PARA BORRAR UN CLIENTE
 btnBorrar.addEventListener('click',()=>{
     let nombreCliente = document.getElementById("nombreB").value;
     console.log(nombreCliente);
-    $temp = `select id_cliente from cliente where nombreComCliente = '${nombreCliente}'`; //revisar bien esta linea 
-    conexion.query($temp, function (err, rows) {
-        if (err) {
+    $temp = `select id_cliente from cliente where nombreComCliente = '${nombreCliente}'`; //SE SELECCIONA ID DEL CLIENTE YA QUE ES LA LLAVE PRIMARIA, SE GUARDA EN ALGO PARECIDO AL QUERY
+     conexion.query($temp, function (err, rows) {
+        if (err){//EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);
             return;
         } else {
+ //lo que se extrae de la BD, queda guardado en ROWS que se vuelve lista de objetos
+            // se obtiene el tamano de la lista
             var long = rows.length;
             for (i = 0; i < long; i++) {
-                var valorId = Number(rows[0].id_cliente);
+                var valorId = Number(rows[0].id_cliente);// SE EXTRAE EL VALOR DEL ID Y SE GUARDA EN UNA NUEVA VARIABLE
+
                 console.log(valorId);
                 //Instruccion SQL
                 $query = `DELETE FROM cliente where id_cliente='${valorId}'`;
                 conexion.query($query, function (err) {
-                    if (err) {
+                    if (err) {//EN CASO DE ERROR
+                        //POP
                         const Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',
@@ -36,10 +41,13 @@ btnBorrar.addEventListener('click',()=>{
                             title: 'Cliente no eliminado'
 
                         })
+
+                        //FIN POP
                         console.log("error en el query");
                         console.log(err);
                         return;
-                    } else {
+                    } else {//SE BORRO
+                        //INICIO POP
                         const Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',
@@ -57,7 +65,9 @@ btnBorrar.addEventListener('click',()=>{
                             title: 'Cliente eliminado correctamente'
 
                         })
-                        setTimeout(() => {
+
+                        //FIN POP
+                        setTimeout(() => {//REDIRECCION AUTOMATICA
                             window.location.href = "Carpetas.html";
                         }, 2000);
                     }

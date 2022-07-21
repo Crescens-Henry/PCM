@@ -1,19 +1,18 @@
-const conexion = require('../conectar.js');
-const btnBuscar=document.querySelector('#BuscarBoton');
-const {default: Swal} = require('sweetalert2');
+const conexion = require('../conectar.js');//CONEXION A BASE DE DATOS
+const btnBuscar=document.querySelector('#BuscarBoton');//CREACION DE VARIABLE PARA BORON BUSCAR EN HTML
+const {default: Swal} = require('sweetalert2');//LIBRERIA POPPOP´S
 
-
+/*FUNCION PRA VER LAS CARPETAS DE LOS CLIENTES */
 const ConsultarCarpetas = () => { //* listo
-
     let query = `SELECT * FROM ConsultarCarpeta;`;
  // instruccion SQL
     let tablaCarpetas = document.getElementById("table");
     conexion.query(query, function (err, rows) {
-        if (err) {
+        if (err) {//INSTRUCCION EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);
             return;
-        } else {//! resultado en pantalla
+        } else {// resultado en pantalla
             //*lo que se extrae de la BD, queda guardado en ROWS que se vuelve lista de objetos
             var long = rows.length; // se obtiene el tamano de la lista
             for (i = 0; i < long; i++) {
@@ -46,22 +45,23 @@ const ConsultarCarpetas = () => { //* listo
         }
     })
 }
-
+//RECARGA DE LA TABLA
 ConsultarCarpetas();
-
+/*BOTON BUSCAR PARA LAS CARPETAS */
 btnBuscar.addEventListener('click',()=>{
     let rfc = document.getElementById('rfcSearch').value;
     let query = `SELECT * FROM ConsultarCarpeta WHERE rfc='${rfc}';`;
  // instruccion SQL
     let tablaCarpetas = document.getElementById("table");
-    tablaCarpetas.innerHTML='';
+    tablaCarpetas.innerHTML='';//SE VACIA LA TABLA QUE SE MUESTRA
     conexion.query(query, function (err, rows) {
-        if (err) {
+        if (err) {//INTRUCCION EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);
             return;
-        } else if (rows.length == 0) {
-          const Toast = Swal.mixin({
+        } else if (rows.length == 0) {//EN CASO DE NO ENCONTRAR EL RFC   
+        //INICIO POP          
+            const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
@@ -78,7 +78,9 @@ btnBuscar.addEventListener('click',()=>{
             title: 'RFC no encontrado'
 
         })  
-        } else{//! resultado en pantalla
+
+        //FIN POP        
+    } else{//! resultado en pantalla
             //*lo que se extrae de la BD, queda guardado en ROWS que se vuelve lista de objetos
             var newRow = tablaCarpetas.insertRow(-1);
                 var celdaNombreCliente = newRow.insertCell(0);
