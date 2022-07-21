@@ -1,6 +1,5 @@
 const conexion = require('../conectar.js');
 const btnBuscar=document.querySelector('#BuscarBoton');
-const btnBorrar= document.querySelector('#botonBorrar');
 const {default: Swal} = require('sweetalert2');
 
 

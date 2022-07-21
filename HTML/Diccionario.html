@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PCM</title>
+  <script src="../Assets/JavaScript/Diccionario.js"></script>
 </head>
 
 <body style="width: 80%">
@@ -48,12 +49,12 @@
         <div class="flexsearch--input-wrapper">
           <input class="flexsearch--input" type="search" id="palabraBuscar" placeholder="Buscar Palabra">
         </div>
-        <input class="flexsearch--submit" type="button" value="&#10140;" id="BuscarPalabra" />
+        <input class="flexsearch--submit" type="button" value="&#10140;" id="BuscarPalabra" onclick="buscarPalabra()"/>
       </form>
     </div>
   </div>
 
-  <div style="text-align: right;"><a href="./AgregarPalabra.html">Agregar palabra</a></div>
+  <div style="text-align: right;"><a href="./AgregarPalabra.html">Agregar palabra</a> / <a href="eliminarPalabra.html">Eliminar palabra</a></div>
   <scroll-container>
     <div class="datagrid">
       <table id="tableDiccionario">
@@ -70,6 +71,6 @@
     </div>
   </scroll-container>
 </body>
-<script src="../Assets/JavaScript/Diccionario.js"></script>
+
 
 </html>

@@ -1,5 +1,6 @@
 const conexion = require('../conectar.js');
 const btnBuscarPalabra=document.querySelector('#BuscarPalabra');
+
 const {default: Swal} = require('sweetalert2');
 
 class Calendario {// objeto usuario a registrar por el contador
@@ -260,6 +261,7 @@ arbolBinario.preOrder()
 console.log('\nIn-Orden:\n')
 arbolBinario.inOrder()
 */
+
 function ConsultarDiccionario(){
     //var cadena
     $query = 'select palabra, concepto FROM diccionario'; // instruccion SQL
@@ -292,12 +294,55 @@ function ConsultarDiccionario(){
 }
 ConsultarDiccionario();
 
-
-btnBuscarPalabra.addEventListener('click',()=>{
+function borrarPalabra(){
+    var palabraBorrar = document.getElementById("palabraB").value;
+    let temp = `SELECT * FROM diccionario WHERE palabra ='${palabraBorrar}'`; 
+ // instruccion SQL
+    conexion.query(temp, function (err, rows) {
+        if (err) {
+            console.log("error en el query");
+            console.log(err);
+            return;
+        } else {
+            for ( i = 0; i < rows.length; i++) {
+                arbolBinario.Borrar(palabra[i]);
+            }
+            let query = `DELETE FROM diccionario WHERE palabra ='${palabraBorrar}'`;           
+            // instruccion SQL
+               conexion.query(query, function (err) {
+                   if (err) {
+                       console.log("error en el query");
+                       console.log(err);
+                       return;
+                   } else {
+                     const Toast = Swal.mixin({
+                       toast: true,
+                       position: 'top-end',
+                       showConfirmButton: false,
+                       timer: 2000,
+                       timerProgressBar: true,
+                       didOpen: (toast) => {
+                           toast.addEventListener('mouseenter', Swal.stopTimer)
+                           toast.addEventListener('mouseleave', Swal.resumeTimer)
+                       }
+                   })
+           
+                   Toast.fire({
+                       icon: 'success',
+                       title: 'palabra borrada con exito'
+           
+                   })
+                   setTimeout(() => {
+                       window.location.href = "Diccionario.html";
+                   }, 2000);
+               }}) 
+    }}) 
+}
+function buscarPalabra(){
+    let tablaDiccionario = document.getElementById("tableDiccionario");
     let palabra = document.getElementById('palabraBuscar').value;
     let query = `SELECT * FROM diccionario WHERE palabra ='${palabra}';`;
  // instruccion SQL
-    let tablaDiccionario = document.getElementById("tableDiccionario");
     tablaDiccionario.innerHTML='';
     conexion.query(query, function (err, rows) {
         if (err) {
@@ -336,4 +381,4 @@ btnBuscarPalabra.addEventListener('click',()=>{
                 celdaConcepto.appendChild(textConcepto);
         }
     })
-});
+}
