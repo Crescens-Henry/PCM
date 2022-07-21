@@ -1,5 +1,4 @@
 const {default: Swal} = require('sweetalert2');// llamada a la libreria de pop pups
-//const btnRe
 const conexion = require('../conectar.js');// llamada a la conexion de BSD
 
 //* funcion para registrar usuario contador utilizada en entrada como opcinal
