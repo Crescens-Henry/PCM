@@ -78,7 +78,7 @@ const registrarCliente = () => { // ? en progreso
             title: 'RFC invalido, intente de nuevo'
 
         })
-    } else if (cuentaBancaria.length != 18 && cuentaBancaria.length !=20) {
+    } else if (cuentaBancaria.length != 16 && cuentaBancaria.length !=20) {
 
         const Toast = Swal.mixin({ //POP
             toast: true,
@@ -107,7 +107,7 @@ const registrarCliente = () => { // ? en progreso
                 return;
             } else {
                 var long = rows.length;
-                for (let i = 0; i <= long; i++) {
+                for (let i = 0; i < long; i++) {
 
                     var valorIdC = Number(rows[i].id_contador);
                     console.log("valorIdc = " + valorIdC);
