@@ -1,13 +1,15 @@
-const conexion = require('../conectar.js');// CONEXION A LA BASE DE DATOS
-const {default: Swal} = require('sweetalert2');// LIBRERIA PARA LOS POPPOP´S
+const conexion = require('../conectar.js'); // CONEXION A LA BASE DE DATOS
+const {
+    default: Swal
+} = require('sweetalert2'); // LIBRERIA PARA LOS POPPOP´S
 
 /*FUNCION PARA PODER VER EL CALENDARIO */
-function ConsultarCalendario()  {
+function ConsultarCalendario() {
     //var cadena;
     $query = 'Select cliente.nombreComCliente, cliente.rfc, calendario.fechaDeclaracion from cliente join calendario on calendario.cliente_id_cliente=cliente.id_cliente'; // instruccion SQL
     let tablaCalendario = document.getElementById("tableConsultar");
     conexion.query($query, function (err, rows) {
-        if (err) {//INTRUCCION EN CASO DE ERROR
+        if (err) { //INTRUCCION EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);
             return;
@@ -33,17 +35,17 @@ function ConsultarCalendario()  {
         }
     })
 }
-ConsultarCalendario();//RECARGA DE LA PAGINA 
+ConsultarCalendario(); //RECARGA DE LA PAGINA 
 //Funcion buscar fecha
 function buscarFecha() {
-    let nombre = document.getElementById('nombreSearch').value;// ESTRACCION DE VALOR DE DATO INGRESADO EN HTML
+    let nombre = document.getElementById('nombreSearch').value; // ESTRACCION DE VALOR DE DATO INGRESADO EN HTML
     console.log(nombre);
     //INSTRUCCION SQL
     let query = `Select cliente.nombreComCliente, cliente.rfc, calendario.fechaDeclaracion from cliente join calendario on calendario.cliente_id_cliente=cliente.id_cliente where nombreComCliente='${nombre}'`;
     let tablaCalendario = document.getElementById("tableConsultar");
-    tablaCalendario.innerHTML = '';// SE VACIA LA TABLA
+    tablaCalendario.innerHTML = ''; // SE VACIA LA TABLA
     conexion.query(query, function (err, rows) {
-        if (err) {// INSTRUCCION EN CASO DE ERROR
+        if (err) { // INSTRUCCION EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);
             return;

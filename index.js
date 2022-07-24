@@ -1,16 +1,21 @@
-const{app, BrowserWindow} = require('electron');
+const {
+    app,
+    BrowserWindow
+} = require('electron');
 
-app.on('ready' ,() => {//! controla la aplicacion y la inicializa (contenedor)
-    let win = new BrowserWindow({width: 800, height: 600,
-    webPreferences:{
-    nodeIntegration:true,
-    contextIsolation: false
-}
+app.on('ready', () => { //! controla la aplicacion y la inicializa (contenedor)
+    let win = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false
+        }
 
-    });//!BroswerWindow objeto que va para la ventana tam
-    
-    win.loadFile("./entrada.html");//* con loadfile() -> se carga y manda a llamar el index 
-    win.on('closed',() => {
+    }); //!BroswerWindow objeto que va para la ventana tam
+
+    win.loadFile("./entrada.html"); //* con loadfile() -> se carga y manda a llamar el index 
+    win.on('closed', () => {
         app.quit();
     });
 })
