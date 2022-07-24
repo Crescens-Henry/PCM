@@ -31,11 +31,11 @@ btnActualizar.addEventListener('click', () => {
                         console.log(err);
                         return;
                     } else {
-                        var descDocumentos = rows[0].descDocumentos;
-                        document.getElementById("Documentos").value = descDocumentos;
-                        console.log(descDocumentos);
+                        documentos = rows[0].descDocumentos;
+                        document.getElementById("Documentos").value = documentos;
+                        console.log(documentos);
                         // se actualiza la descripcion y mandamos a la BSD la nueva informacion
-                        $actualizarDocs = `update carpeta set descDocumentos= '${documentos} where id_carpeta=${valorIdCliente}`;
+                        $actualizarDocs = `update carpeta set descDocumentos= '${documentos}' where cliente_id_cliente='${valorIdCliente}'`;
                         conexion.query($actualizarDocs, function (err) {
                             if (err) {
                                 console.log("error en el query");
@@ -64,6 +64,7 @@ btnActualizar.addEventListener('click', () => {
                                 }, 2000);
                             }
                         })
+
                     }
                 })
             }
