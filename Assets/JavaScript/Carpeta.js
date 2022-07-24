@@ -1,7 +1,6 @@
 const conexion = require('../conectar.js'); //CONEXION A BASE DE DATOS
 const btnBuscar = document.querySelector('#BuscarBoton'); //CREACION DE VARIABLE PARA BORON BUSCAR EN HTML
 const {default: Swal} = require('sweetalert2'); //LIBRERIA POPPOP´S
-const btnActualizar = document.querySelector('#Documentos');
 
 /*FUNCION PRA VER LAS CARPETAS DE LOS CLIENTES */
 const ConsultarCarpetas = () => { //* listo
