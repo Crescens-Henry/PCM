@@ -1,7 +1,5 @@
-const {
-    default: Swal
-} = require('sweetalert2'); // llamada a la libreria de pop pups
-const conexion = require('../conectar.js'); // llamada a la conexion de BSD
+const {default: Swal} = require('sweetalert2');// llamada a la libreria de pop pups
+const conexion = require('../conectar.js');// llamada a la conexion de BSD
 
 //* funcion para registrar usuario contador utilizada en entrada como opcinal
 const RegistrarContador = () => { //* listo
@@ -42,7 +40,7 @@ const RegistrarContador = () => { //* listo
     });
 }
 //* funcion para registrar usuario cliente utilizada en AgregarCliente.html
-function RegistrarCliente() { // ? en progreso --------
+const registrarCliente = () => { // ? en progreso
     var nombre = document.getElementById("nombreCliente").value;
     var rfc = document.getElementById("claveRFC").value;
     var cuentaBancaria = document.getElementById("cuentaBancaria").value;
@@ -52,9 +50,8 @@ function RegistrarCliente() { // ? en progreso --------
     var nombreComContador = JSON.parse(localStorage.getItem("nombre"));
     console.log(nombreComContador);
     $query2 = `SELECT id_contador FROM contador where nombreComContador= ' ${nombreComContador}'`;
-    // todo: sentencia query mediante nombre completo obtener el id 
-    //? investigar como traer el dato de contador como por defecto desde que se inicia sesion
-
+   
+    //Instruccion SQL
     conexion.query($query2, function (err, rows) {
         if (err) {
             console.log("error en el query");
@@ -63,53 +60,64 @@ function RegistrarCliente() { // ? en progreso --------
         } else {
             var long = rows.length;
             for (let i = 0; i <= long; i++) {
-                
                 var valorId = Number(rows[i].id_contador);
                 var ciclo = i;
                 console.log(ciclo);
                 console.log("dentro del for");
-
-                $query1 = `INSERT INTO cliente (id_cliente,nombreComCliente,rfc,tipo,contador_id_contador) VALUES ('','${nombre}','${rfc}','${tipo}','${valorId}')`;
-                conexion.query($query1, function (err) {
-                        if (err) { //INSTRUCCION EN CASO DE ERROR
-                            console.log("error en el query");
-                            console.log(err);
-                            return;
-                        } else {
-                            const Toast = Swal.mixin({ //POPPOP
-                                toast: true,
-                                position: 'top-end',
-                                showConfirmButton: false,
-                                timer: 2000,
-                                timerProgressBar: true,
-                                didOpen: (toast) => {
-                                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                $temp = `INSERT INTO cliente(id_cliente,nombreComCliente,rfc,tipo,contador_id_contador) VALUES ('','${nombre}','${rfc}','${tipo}','10005')`; //? investigar como traer el dato de contador como por defecto desde que se inicia sesion
+                conexion.query($temp, function (err, rows) { 
+                    if (err) {
+                        console.log("error en el query");
+                        console.log(err);
+                        return;
+                    } else {          
+                        $id= `SELECT id_cliente FROM cliente WHERE nombreComCliente='${nombre}'`;
+                        conexion.query($id, function (err, rows) {           
+                            if (err) {
+                                console.log("error en el query");
+                                console.log(err);
+                                return;
+                            } else {
+                                var long = rows.length;
+                                for (i = 0; i < long; i++) {
+                                    var valorId = Number(rows[0].id_cliente);
+                                    console.log(valorId);
+                                    $query=`INSERT INTO carpeta(id_carpeta,descDocumentos, localizacion, cuentaBancaria, cliente_id_cliente) VALUES ('','${documentos}','${localizacion}','${cuentaBancaria}', '${valorId}')`;
+                                    console.log("Entra");
+                                    conexion.query($query, function (err) {
+                                        if (err) {
+                                            console.log("error en el query");
+                                            console.log(err);
+                                            return;
+                                        } else {
+                                            const Toast = Swal.mixin({
+                                                toast: true,
+                                                position: 'top-end',
+                                                showConfirmButton: false,
+                                                timer: 2000,
+                                                timerProgressBar: true,
+                                                didOpen: (toast) => {
+                                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                }
+                                            })
+                                            Toast.fire({
+                                                icon: 'success',
+                                                title: 'Datos guardados'
+                                            })
+                                            setTimeout(() => {
+                                                window.location.href = "Carpetas.html";
+                                            }, 2000);
+                                        }
+                                    })
                                 }
-                            });
-
-                            Toast.fire({
-                                icon: 'success',
-                                title: 'Datos guardados'
-
-                            })
-                            setTimeout(() => { //REDIRECCION 
-                                window.location.href = "Carpetas.html";
-                            }, 2000);
-                        }
+                            }
+                        })
                     }
-
-
-
-                    //Instruccion SQL
-                    //! opcion 2... editar directamente la view para porder insertar datos
-                    //! debemo extraer por defecto el id de contador para que se asigne automaticamente a usuario cliente
-
-                    //! creamos el apartado de carpeta con los datos que utiliza el join (tabla cliente, contador y carpeta) insertar por separado pero estando vinculados cada uno 
-                )
+                })
             }
         }
-    });
+    })
 }
 //* funcion para registrar palabras utilizada en agregarPalabra.html
 const RegistrarPalabras = () => { //* listo
