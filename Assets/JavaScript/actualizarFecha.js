@@ -1,7 +1,5 @@
 const conexion = require('../conectar.js'); // llamada a js de conexion a BSD
-const {
-    default: Swal
-} = require('sweetalert2'); // Llamada a la libreria para los poppop´s
+const {default: Swal} = require('sweetalert2'); // Llamada a la libreria para los poppop´s
 
 // funcion de actualizacion de fecha para usuario cliente
 function actualizarFecha() {

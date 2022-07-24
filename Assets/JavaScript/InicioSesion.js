@@ -1,9 +1,5 @@
-const {
-    default: Swal
-} = require('sweetalert2'); //LIBRERIA DE POP
-const {
-    query
-} = require('./conectar'); //CONEXION A BASE DE DATOS
+const {default: Swal} = require('sweetalert2'); //LIBRERIA DE POP
+const {query} = require('./conectar'); //CONEXION A BASE DE DATOS
 var conexion = require('./conectar'); //CONEXION A BASE DE DATOS
 const contador = document.querySelector('#txtContador');
 const pass = document.querySelector('#password');

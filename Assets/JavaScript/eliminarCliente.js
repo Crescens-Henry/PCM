@@ -30,6 +30,7 @@ btnBorrar.addEventListener('click', () => {
                             toast: true,
                             position: 'top-end',
                             showConfirmButton: false,
+                            width: 200,
                             timer: 2000,
                             timerProgressBar: true,
                             didOpen: (toast) => {

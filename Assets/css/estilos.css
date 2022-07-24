@@ -54,7 +54,7 @@ a {
 }
 
 .flexsearch--input {
-  width: 80%;
+  width: 50%;
 }
 
 /***********************
@@ -70,7 +70,7 @@ a {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 20px;
-  padding: 0 46px 0 10px;
+  padding: 0 50px 0 40px;
   border-color: #888;
   border-radius: 35px;
   /* (height/2) + border-width */
@@ -88,9 +88,9 @@ a {
   position: absolute;
   right: 0;
   top: 0;
-  display: block;
+  display:flex;
   width: 50%;
-  height: 35px;
+  height: 30px;
   padding: 0;
   border: none;
   margin-top: 10px;

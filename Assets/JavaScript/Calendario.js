@@ -1,7 +1,5 @@
 const conexion = require('../conectar.js'); // CONEXION A LA BASE DE DATOS
-const {
-    default: Swal
-} = require('sweetalert2'); // LIBRERIA PARA LOS POPPOP´S
+const {default: Swal} = require('sweetalert2'); // LIBRERIA PARA LOS POPPOP´S
 
 /*FUNCION PARA PODER VER EL CALENDARIO */
 function ConsultarCalendario() {
