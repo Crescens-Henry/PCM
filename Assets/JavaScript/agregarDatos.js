@@ -1,5 +1,7 @@
-const {default: Swal} = require('sweetalert2');// llamada a la libreria de pop pups
-const conexion = require('../conectar.js');// llamada a la conexion de BSD
+const {
+    default: Swal
+} = require('sweetalert2'); // llamada a la libreria de pop pups
+const conexion = require('../conectar.js'); // llamada a la conexion de BSD
 
 //* funcion para registrar usuario contador utilizada en entrada como opcinal
 const RegistrarContador = () => { //* listo
@@ -50,7 +52,7 @@ const registrarCliente = () => { // ? en progreso
     var nombreComContador = JSON.parse(localStorage.getItem("nombre"));
     console.log(nombreComContador);
     $query2 = `SELECT id_contador FROM contador where nombreComContador= ' ${nombreComContador}'`;
-   
+
     //Instruccion SQL
     conexion.query($query2, function (err, rows) {
         if (err) {
@@ -65,14 +67,14 @@ const registrarCliente = () => { // ? en progreso
                 console.log(ciclo);
                 console.log("dentro del for");
                 $temp = `INSERT INTO cliente(id_cliente,nombreComCliente,rfc,tipo,contador_id_contador) VALUES ('','${nombre}','${rfc}','${tipo}','10005')`; //? investigar como traer el dato de contador como por defecto desde que se inicia sesion
-                conexion.query($temp, function (err, rows) { 
+                conexion.query($temp, function (err, rows) {
                     if (err) {
                         console.log("error en el query");
                         console.log(err);
                         return;
-                    } else {          
-                        $id= `SELECT id_cliente FROM cliente WHERE nombreComCliente='${nombre}'`;
-                        conexion.query($id, function (err, rows) {           
+                    } else {
+                        $id = `SELECT id_cliente FROM cliente WHERE nombreComCliente='${nombre}'`;
+                        conexion.query($id, function (err, rows) {
                             if (err) {
                                 console.log("error en el query");
                                 console.log(err);
@@ -82,7 +84,7 @@ const registrarCliente = () => { // ? en progreso
                                 for (i = 0; i < long; i++) {
                                     var valorId = Number(rows[0].id_cliente);
                                     console.log(valorId);
-                                    $query=`INSERT INTO carpeta(id_carpeta,descDocumentos, localizacion, cuentaBancaria, cliente_id_cliente) VALUES ('','${documentos}','${localizacion}','${cuentaBancaria}', '${valorId}')`;
+                                    $query = `INSERT INTO carpeta(id_carpeta,descDocumentos, localizacion, cuentaBancaria, cliente_id_cliente) VALUES ('','${documentos}','${localizacion}','${cuentaBancaria}', '${valorId}')`;
                                     console.log("Entra");
                                     conexion.query($query, function (err) {
                                         if (err) {

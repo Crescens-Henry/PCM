@@ -1,15 +1,11 @@
-const conexion = require('../conectar.js');//CONEXION A BASE DE DATOS
-const btnBuscarPalabra=document.querySelector('#BuscarPalabra'); //CONSTANTE PARA BOTON
-const {default: Swal} = require('sweetalert2');//LIBRERIA DE POPPOP´S
+const conexion = require('../conectar.js'); //CONEXION A BASE DE DATOS
+const btnBuscarPalabra = document.querySelector('#BuscarPalabra'); //CONSTANTE PARA BOTON
+const {
+    default: Swal
+} = require('sweetalert2'); //LIBRERIA DE POPPOP´S
 
-class Calendario {// objeto usuario a registrar por el contador
-    constructor(palabra, concepto) {
-        this.palabra = palabra;
-        this.concepto = concepto;
-    }
-}
 
-class Nodo {// Nodo
+class Nodo { // Nodo
     constructor(llave, obj) {
         this.llave = llave
         this.obj = obj
@@ -24,7 +20,7 @@ class Arbol {
         this.raiz = null
     }
 
-    isEmpty() {//ESTA VACIO
+    isEmpty() { //ESTA VACIO
         return this.raiz === null
     }
 
@@ -60,7 +56,7 @@ class Arbol {
 
 
     Buscar(llave) { //! funcion de busqueda
-        if (this.isEmpty()) {// SI ESTA VACIO
+        if (this.isEmpty()) { // SI ESTA VACIO
             return null
         }
 
@@ -226,9 +222,9 @@ arbolBinario.Agregar(clienteUsuario10.nombre, clienteUsuario10)
 arbolBinario.Agregar(clienteUsuario11.nombre, clienteUsuario11)
 arbolBinario.Agregar(clienteUsuario12.nombre, clienteUsuario12)*/
 //LISTAS DE OBJETOS
-let datos=[];
-let palabra=[];
-let concepto=[];
+let datos = [];
+let palabra = [];
+let concepto = [];
 
 //! se mandan a llamar las funciones para su ejecucion
 /*console.log('\nIn-Orden:\n')
@@ -261,23 +257,23 @@ arbolBinario.inOrder()
 */
 
 //FUNCION PARA MOSTRAR EL DICCIONARIO*/
-function ConsultarDiccionario(){
+function ConsultarDiccionario() {
     //var cadena
     $query = 'select palabra, concepto FROM diccionario'; // instruccion SQL
     conexion.query($query, function (err, rows) {
-        if (err) {//INSTRUCCION EN CASO DE ERROR
+        if (err) { //INSTRUCCION EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);
             return;
-        } else {//EXITO
+        } else { //EXITO
             let tablaDiccionario = document.getElementById("tableDiccionario");
             //lo que se extrae de la BD, queda guardado en ROWS que se vuelve lista de objetos
-// se obtiene el tamano de la lista
-            for ( i = 0; i < rows.length; i++) {//SE REPITE HASTA EL LARGO DE LA LISTA
-                arbolBinario.Agregar(rows[i].palabra,rows[i].concepto);//SE AGRGAN AL ARBOL
+            // se obtiene el tamano de la lista
+            for (i = 0; i < rows.length; i++) { //SE REPITE HASTA EL LARGO DE LA LISTA
+                arbolBinario.Agregar(rows[i].palabra, rows[i].concepto); //SE AGRGAN AL ARBOL
             }
-                arbolBinario.inOrder();//SE LLAMA EL INORDEN
-            for ( i = 0; i < datos.length; i++) {//CREACION DE LA TABLA A MOSTRAR
+            arbolBinario.inOrder(); //SE LLAMA EL INORDEN
+            for (i = 0; i < datos.length; i++) { //CREACION DE LA TABLA A MOSTRAR
                 var newRowDiccionarnio = tablaDiccionario.insertRow(-1);
                 var celdaPalabra = newRowDiccionarnio.insertCell(0);
                 var celdaConcepto = newRowDiccionarnio.insertCell(1);
@@ -285,101 +281,103 @@ function ConsultarDiccionario(){
                 var textConcepto = document.createTextNode(concepto[i]);
                 celdaPalabra.appendChild(textoPalabra);
                 celdaConcepto.appendChild(textConcepto);
-                
+
             }
             //alert(cadena)
-    }
+        }
     })
 }
 ConsultarDiccionario();
 
 //FUNCION PARA BORRAR PALABRA
-function borrarPalabra(){
+function borrarPalabra() {
     var palabraBorrar = document.getElementById("palabraB").value;
-    let temp = `SELECT * FROM diccionario WHERE palabra ='${palabraBorrar}'`; 
- // instruccion SQL
+    let temp = `SELECT * FROM diccionario WHERE palabra ='${palabraBorrar}'`;
+    // instruccion SQL
     conexion.query(temp, function (err, rows) {
         if (err) {
             console.log("error en el query");
             console.log(err);
             return;
         } else {
-            for ( i = 0; i < rows.length; i++) {
+            for (i = 0; i < rows.length; i++) {
                 arbolBinario.Borrar(palabra[i]);
             }
-            let query = `DELETE FROM diccionario WHERE palabra ='${palabraBorrar}'`;           
+            let query = `DELETE FROM diccionario WHERE palabra ='${palabraBorrar}'`;
             // instruccion SQL
-               conexion.query(query, function (err) {
-                   if (err) {
-                       console.log("error en el query");
-                       console.log(err);
-                       return;
-                   } else {
-                     const Toast = Swal.mixin({
-                       toast: true,
-                       position: 'top-end',
-                       showConfirmButton: false,
-                       timer: 2000,
-                       timerProgressBar: true,
-                       didOpen: (toast) => {
-                           toast.addEventListener('mouseenter', Swal.stopTimer)
-                           toast.addEventListener('mouseleave', Swal.resumeTimer)
-                       }
-                   })
-           
-                   Toast.fire({
-                       icon: 'success',
-                       title: 'palabra borrada con exito'
-           
-                   })
-                   setTimeout(() => {
-                       window.location.href = "Diccionario.html";
-                   }, 2000);
-               }}) 
-    }}) 
+            conexion.query(query, function (err) {
+                if (err) {
+                    console.log("error en el query");
+                    console.log(err);
+                    return;
+                } else {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'palabra borrada con exito'
+
+                    })
+                    setTimeout(() => {
+                        window.location.href = "Diccionario.html";
+                    }, 2000);
+                }
+            })
+        }
+    })
 }
 //FUNCION BUSCAR
-function buscarPalabra(){
+function buscarPalabra() {
     let tablaDiccionario = document.getElementById("tableDiccionario");
     let palabra = document.getElementById('palabraBuscar').value;
     let query = `SELECT * FROM diccionario WHERE palabra ='${palabra}';`;
- // instruccion SQL
-    tablaDiccionario.innerHTML='';
+    // instruccion SQL
+    tablaDiccionario.innerHTML = '';
     conexion.query(query, function (err, rows) {
-        if (err) {//INSTRUCCION EN CASO DE ERROR
+        if (err) { //INSTRUCCION EN CASO DE ERROR
             console.log("error en el query");
             console.log(err);
             return;
-        } else if (rows.length == 0) {//
-          const Toast = Swal.mixin({//POP
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
+        } else if (rows.length == 0) { //
+            const Toast = Swal.mixin({ //POP
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
 
-        Toast.fire({
-            icon: 'error',
-            title: 'palabra no encontrada'
+            Toast.fire({
+                icon: 'error',
+                title: 'palabra no encontrada'
 
-        })  
-        } else{//! resultado en pantalla
+            })
+        } else { //! resultado en pantalla
             //*lo que se extrae de la BD, queda guardado en ROWS que se vuelve lista de objetos
             var newRow = tablaDiccionario.insertRow(-1);
-                var celdaPalabra = newRow.insertCell(0);
-                var celdaConcepto = newRow.insertCell(1);
-                
-                
-                var textoPalabra = document.createTextNode(rows[0].palabra);
-                var textConcepto = document.createTextNode(rows[0].concepto);
-         
-                celdaPalabra.appendChild(textoPalabra);
-                celdaConcepto.appendChild(textConcepto);
+            var celdaPalabra = newRow.insertCell(0);
+            var celdaConcepto = newRow.insertCell(1);
+
+
+            var textoPalabra = document.createTextNode(rows[0].palabra);
+            var textConcepto = document.createTextNode(rows[0].concepto);
+
+            celdaPalabra.appendChild(textoPalabra);
+            celdaConcepto.appendChild(textConcepto);
         }
     })
 }

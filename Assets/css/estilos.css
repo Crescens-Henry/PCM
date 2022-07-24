@@ -26,9 +26,11 @@
   line-height: 2;
   background: #000000;
 }
+
 a {
   color: #ffffff;
 }
+
 /*CREACION DEL FORMTO DE LA BARRA DE BUSQUEDA*/
 .flexsearch--wrapper {
   height: auto;
@@ -46,7 +48,8 @@ a {
 }
 
 .flexsearch--input-wrapper {
-  padding: 0 66px 0 0; /* Right padding for submit button width */
+  padding: 0 66px 0 0;
+  /* Right padding for submit button width */
   overflow: auto;
 }
 
@@ -58,7 +61,8 @@ a {
  * Configurable Styles *
  ***********************/
 .flexsearch {
-  padding: 0 25px 0 200px; /* Padding for other horizontal elements */
+  padding: 0 25px 0 200px;
+  /* Padding for other horizontal elements */
 }
 
 .flexsearch--input {
@@ -68,7 +72,8 @@ a {
   height: 20px;
   padding: 0 46px 0 10px;
   border-color: #888;
-  border-radius: 35px; /* (height/2) + border-width */
+  border-radius: 35px;
+  /* (height/2) + border-width */
   border-style: solid;
   border-width: 5px;
   margin-top: 15px;
@@ -88,8 +93,10 @@ a {
   height: 35px;
   padding: 0;
   border: none;
-  margin-top: 10px; /* margin-top + border-width */
-  margin-right: 0px; /* border-width */
+  margin-top: 10px;
+  /* margin-top + border-width */
+  margin-right: 0px;
+  /* border-width */
   background: transparent;
   color: #888;
   font-family: "Helvetica", sans-serif;
@@ -132,6 +139,7 @@ input:-moz-placeholder {
   line-height: 45px;
   text-align: center;
 }
+
 body {
   justify-content: center;
   background-color: #c4c0bf;
@@ -154,9 +162,11 @@ a {
   border-bottom: 5px solid rgba(#8e44ad, 0.2);
   padding: 3px 2px;
 }
+
 :hover {
   border-bottom-color: #9b59b6;
 }
+
 /*FORMATO DEL MENU DE ARRIBA DE CADA PAGINA*/
 .layout {
   display: grid;
@@ -182,14 +192,17 @@ label.nav {
   transition: background 0.4s, padding-left 0.2s;
   padding-left: 0;
 }
+
 label.nav.input[type="radio"]:checked + .page + {
   background: #9b59b6;
   color: #ffffff;
   padding-left: 20px;
 }
+
 span {
   padding-left: 20px;
 }
+
 svg {
   opacity: 1;
 }
@@ -213,6 +226,7 @@ span {
   transform: translateY(20px);
   transition: opacity 0.2s, transform 0.2s;
 }
+
 @for $c from 1 through 20 {
   &:nth-child(#{$c}) {
     transition-delay: 0.2s + ($c * 0.2s);
@@ -227,16 +241,19 @@ input[type="radio"] + .page {
 input[type="radio"]:checked + .page {
   transform: translateX(0%);
 }
+
 .page-contents > * {
   opacity: 1;
   transform: translateY(0px);
 }
+
 /*FORMATO DE LAS TABLAS QUE SE MUESTRAN*/
 .datagrid table {
   border-collapse: separate;
   text-align: center;
   width: 100%;
 }
+
 .datagrid {
   font: normal 12px/150% Arial, Helvetica, sans-serif;
   background: #fff;
@@ -247,10 +264,12 @@ input[type="radio"]:checked + .page {
   border-radius: 20px;
   width: 100%;
 }
+
 .datagrid table td,
 .datagrid table th {
   padding: 20px 50px;
 }
+
 .datagrid table thead th {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c4c0bf), color-stop(1, #c4c0bf));
   background: -moz-linear-gradient(center top, #c4c0bf 5%, #c4c0bf 100%);
@@ -261,25 +280,31 @@ input[type="radio"]:checked + .page {
   font-weight: bold;
   border-left: 5px solid #a3a3a3;
 }
+
 .datagrid table thead th:first-child {
   border: none;
 }
+
 .datagrid table tbody td {
   color: #7d7d7d;
   border-left: 1px solid #c4c0bf;
   font-size: 17px;
   font-weight: normal;
 }
+
 .datagrid table tbody .alt td {
   background: #ebebeb;
   color: #7d7d7d;
 }
+
 .datagrid table tbody td:first-child {
   border-left: none;
 }
+
 .datagrid table tbody tr:last-child td {
   border-bottom: none;
 }
+
 .label-1 {
   width: 200px;
   height: 19px;
@@ -289,6 +314,7 @@ input[type="radio"]:checked + .page {
   font-size: 14px;
   text-align: left;
 }
+
 .rectangle-1 {
   width: 37px;
   height: 32px;
@@ -299,11 +325,13 @@ input[type="radio"]:checked + .page {
   border-style: solid;
   border-radius: 3px 0px 0px 3px;
 }
+
 .plain-svg-1 {
   width: 15px;
   height: 15px;
   background: #00000000;
 }
+
 .rectangle-2 {
   width: 213px;
   height: 32px;
@@ -314,6 +342,7 @@ input[type="radio"]:checked + .page {
   border-style: solid;
   border-radius: 0px 3px 3px 0px;
 }
+
 .button-1 {
   width: 98px;
   height: 32px;
@@ -329,6 +358,7 @@ input[type="radio"]:checked + .page {
   font-size: 14px;
   text-align: center;
 }
+
 .bootstrap-blue-button-pressed-4 {
   width: 256px;
   height: 132px;
@@ -361,6 +391,7 @@ input[type="radio"]:checked + .page {
   line-height: 1.3;
   text-align: left;
 }
+
 .link-1 {
   width: 102px;
   height: 20px;
@@ -371,6 +402,7 @@ input[type="radio"]:checked + .page {
   text-decoration: underline;
   text-align: left;
 }
+
 .mainmenubtn {
   background-color: skyblue;
   color: white;
@@ -379,27 +411,33 @@ input[type="radio"]:checked + .page {
   padding: 20px;
   margin-top: 20px;
 }
+
 .mainmenubtn:hover {
   background-color: blue;
 }
+
 .dropdown {
   position: relative;
   display: inline-block;
 }
+
 .dropdown-child {
   display: none;
   background-color: skyblue;
   min-width: 200px;
 }
+
 .dropdown-child a {
   color: blue;
   padding: 20px;
   text-decoration: none;
   display: block;
 }
+
 .dropdown:hover .dropdown-child {
   display: block;
 }
+
 /*FORMATO DEL SCROOL PARA PODER MOSTRAR VARIOS DATOS*/
 scroll-container {
   display: block;
@@ -409,11 +447,13 @@ scroll-container {
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
+
 /**scroll personalizado*/
 /*?primero se accede a la barra y se le da el tamaño entre otras propiedades*/
 scroll-container::-webkit-scrollbar {
   width: 7px;
 }
+
 /*?despues de edita la barra que baja y sube con propiedades X*/
 scroll-container::-webkit-scrollbar-thumb {
   background: #333;
