@@ -13,7 +13,25 @@ btnBorrar.addEventListener('click', () => {
             console.log("error en el query");
             console.log(err);
             return;
-        } else {
+        } else if (rows.length ==0){
+            const Toast = Swal.mixin({ //POP
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Usuario no encontrado'
+
+            })
+        }else{
             //lo que se extrae de la BD, queda guardado en ROWS que se vuelve lista de objetos
             // se obtiene el tamano de la lista
             var long = rows.length;
