@@ -5,8 +5,8 @@ const {
 
 app.on('ready', () => { //! controla la aplicacion y la inicializa (contenedor)
     let win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1400,
+        height: 700,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
