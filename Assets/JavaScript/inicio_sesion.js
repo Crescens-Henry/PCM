@@ -47,17 +47,13 @@ button.addEventListener('click', () => {
 
         })
     } else { //SI NINGUNO DE LOS DATOS ESTA VACIO
-        $query = `select * from contador where nombreComContador ='${nombre}'`; //busca
-
+        $query = `select * from contador where nombreComContador ='${nombre}'`; //busca los datos del contador
         conexion.query($query, function (err, rows) {
             if (err) { //EN CASO DE ERROR
                 console.log("error en el query");
                 console.log(err);
                 return;
-            } else if (rows.length != 0) { //SI EL LARGO DE ROWS ES DIFERENTE A 0, OSEA ENCONTRO AL USUARIO //'&& contraseña ='${pass}
-                //console.log(password)
-                //console.log(rows[0].contraseña)
-
+            } else if (rows.length != 0) { //SI EL LARGO DE ROWS ES DIFERENTE A 0, OSEA ENCONTRO AL USUARIO //
                 if (rows[0].contraseña == password) { // USUARIO Y CONTRASEÑA IGUAL QUE EN LA BASE DE DATOS
                     localStorage.setItem("nombre", JSON.stringify(nombre));
                     err = false;
@@ -119,78 +115,6 @@ button.addEventListener('click', () => {
 
                 })
             }
-            /* for (let i = 0; i < users.length; i++) {
-                 if (usuario === users[i].user && password === users[i].pass) {
-                     
-                     localStorage.setItem("usuario", users[i].nombre);
-                     alert('¡Bienvenido ' + users[i].nombre + '!');
-                     error = false;
-
-                    
-                     break;
-                 }
-             }
-             if (error) {
-                 alert('¡Datos incorrectos!');
-             }*/
         });
     }
 });
-
-/*const validarPassword=(password, usuarios)=>{
-    for(i=0; i<usuarios.length;i++){
-        if(password==usuarios[i].password){
-            return password;
-        }
-    }
-    return -1;
-}
-
-const RegistrarContador = () => {
-    var nombre = document.getElementById("nombre").value;
-    var apellido = document.getElementById("apellido").value;
-    var rango = document.getElementById("rango").value;
-    var password = document.getElementById("password").value;
-    //Instruccion SQL
-    $query = `INSERT INTO contador (id_contador,nombre,apellido,rango,contraseña) VALUES ('','${nombre}','${apellido}','${rango}','${password}')`;
-    conexion.query($query, function (err) {
-        if (err) {
-            console.log("error en el query");
-            console.log(err);
-            return;
-        } else {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 1500,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-
-            Toast.fire({
-                icon: 'success',
-                title: 'Datos guardados'
-
-            })
-            setTimeout(() => {
-                window.location.href = "./entrada.html";
-            }, 1500);
-        }
-    });
-}*/
-/*const Registro=()=>{
-        listaUsuarios=JSON.parse(localStorage.getItem("lista"));
-        let correo= document.getElementById("txtCorreo").value;// mando a llamar los datos 
-        let texto= document.getElementById("txtUsuario").value;// mando a llamar los datos 
-        let password= document.getElementById("txtPassword").value;// mando a llamar los datos
-        let con
-        let aviso;// declaro una variable
-        let users = {correo, texto, password}
-        Usuarios.unshift(users)
-        console.log(Usuarios);
-        location.href="InicioSesion.html";
-}*/
