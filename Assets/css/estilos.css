@@ -88,7 +88,7 @@ a {
   position: absolute;
   right: 0;
   top: 0;
-  display:flex;
+  display: flex;
   width: 50%;
   height: 30px;
   padding: 0;
@@ -399,7 +399,7 @@ input[type="radio"]:checked + .page {
   font-family: "Helvetica";
   font-weight: 400;
   font-size: 14px;
-  text-decoration: underline;
+  text-decoration: none;
   text-align: left;
 }
 
