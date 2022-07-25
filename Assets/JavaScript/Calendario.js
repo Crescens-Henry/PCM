@@ -29,7 +29,6 @@ function ConsultarCalendario() {
                 celdaRfc.appendChild(textoRfc);
                 celdaFecha.appendChild(textoFecha);
             }
-            //alert(cadena)
         }
     })
 }
@@ -37,7 +36,6 @@ ConsultarCalendario(); //RECARGA DE LA PAGINA
 //Funcion buscar fecha
 function buscarFecha() {
     let nombre = document.getElementById('nombreSearch').value; // ESTRACCION DE VALOR DE DATO INGRESADO EN HTML
-    console.log(nombre);
     //INSTRUCCION SQL
     let query = `Select cliente.nombreComCliente, cliente.rfc, calendario.fechaDeclaracion from cliente join calendario on calendario.cliente_id_cliente=cliente.id_cliente where nombreComCliente='${nombre}'`;
     let tablaCalendario = document.getElementById("tableConsultar");
@@ -85,5 +83,3 @@ function buscarFecha() {
         }
     })
 };
-
-//revisar si funciona bien 
