@@ -1,8 +1,6 @@
 const conexion = require('../conectar.js'); //CONEXION A BASE DE DATOS
 const btnBuscarPalabra = document.querySelector('#BuscarPalabra'); //CONSTANTE PARA BOTON
-const {
-    default: Swal
-} = require('sweetalert2'); //LIBRERIA DE POPPOP´S
+const {default: Swal} = require('sweetalert2'); //LIBRERIA DE POPPOP´S
 
 
 class Nodo { // Nodo
@@ -194,67 +192,10 @@ class Arbol {
     }
 }
 var arbolBinario = new Arbol() // madno a llamar el arbol
-// declaro mis objetos
-/*var clienteUsuario1 = new UsuarioCliente(1, 'Crescencio', '1001')
-var clienteUsuario2 = new UsuarioCliente(2, 'Kristell', '1002')
-var clienteUsuario3 = new UsuarioCliente(3, 'Eczar', '1003')
-var clienteUsuario4 = new UsuarioCliente(4, 'Jonathan', '1004')
-var clienteUsuario5 = new UsuarioCliente(5, 'Mauricio', '1005')
-var clienteUsuario6 = new UsuarioCliente(6, 'Diana', '1006')
-var clienteUsuario7 = new UsuarioCliente(7, 'Maria', '1007')
-var clienteUsuario8 = new UsuarioCliente(8, 'Angel', '1008')
-var clienteUsuario9 = new UsuarioCliente(9, 'Oscar', '1009')
-var clienteUsuario10 = new UsuarioCliente(10, 'Andres', '10010')
-var clienteUsuario11 = new UsuarioCliente(11, 'Adolfo', '10011')
-var clienteUsuario12 = new UsuarioCliente(12, 'Martin', '10012')
 
-// agrego mis objetos al arbol binario
-arbolBinario.Agregar(clienteUsuario1.nombre, clienteUsuario1)
-arbolBinario.Agregar(clienteUsuario2.nombre, clienteUsuario2)
-arbolBinario.Agregar(clienteUsuario3.nombre, clienteUsuario3)
-arbolBinario.Agregar(clienteUsuario4.nombre, clienteUsuario4)
-arbolBinario.Agregar(clienteUsuario5.nombre, clienteUsuario5)
-arbolBinario.Agregar(clienteUsuario6.nombre, clienteUsuario6)
-arbolBinario.Agregar(clienteUsuario7.nombre, clienteUsuario7)
-arbolBinario.Agregar(clienteUsuario8.nombre, clienteUsuario8)
-arbolBinario.Agregar(clienteUsuario9.nombre, clienteUsuario9)
-arbolBinario.Agregar(clienteUsuario10.nombre, clienteUsuario10)
-arbolBinario.Agregar(clienteUsuario11.nombre, clienteUsuario11)
-arbolBinario.Agregar(clienteUsuario12.nombre, clienteUsuario12)*/
-//LISTAS DE OBJETOS
 let datos = [];
 let palabra = [];
 let concepto = [];
-
-//! se mandan a llamar las funciones para su ejecucion
-/*console.log('\nIn-Orden:\n')
-arbolBinario.inOrder()
-console.log('\nPre-Orden:\n')
-arbolBinario.preOrder()
-
-/*
-console.log('\nPost-Orden:\n')
-arbolBinario.postOrder()
-var buscarDato = 'Crescencio'
-console.log('\nBuscar: ' + buscarDato + '\n')
-console.log(arbolBinario.Buscar(buscarDato))
-//? console.log(t.findRecursive(12)) busquda que utiliza recursividad
-console.log(arbolBinario.Buscar('Sonia'))// dato inexistente
-
-var borrarDato = 'Kristell'
-console.log('\nBorrar a: ' + borrarDato + '\n')
-arbolBinario.Borrar(borrarDato)
-arbolBinario.Borrar('Maria')
-//arbolBinario.Borrar('Kristell') 
-//? funcionamiento d caso 3 no disponible
-
-console.log('\nContenido de arbol:\n')
-//arbolBinario.print()
-console.log('\nPre-Orden:\n')
-arbolBinario.preOrder()
-console.log('\nIn-Orden:\n')
-arbolBinario.inOrder()
-*/
 
 //FUNCION PARA MOSTRAR EL DICCIONARIO*/
 function ConsultarDiccionario() {
