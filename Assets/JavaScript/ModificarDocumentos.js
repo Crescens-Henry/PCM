@@ -10,7 +10,6 @@ btnActualizar.addEventListener('click', () => {
     // obtenemos el nombre condicional
     let nombre = document.getElementById('txtUsuario').value;
     let documentos = document.getElementById('Documentos').value;
-
     console.log(nombre);
     // obtenemos desde la base de datos la informacion poreestablecida
     $idCliente = `SELECT id_cliente FROM cliente WHERE nombreComCliente='${nombre}'`;
@@ -19,12 +18,29 @@ btnActualizar.addEventListener('click', () => {
             console.log("error en el query");
             console.log(err);
             return;
-        } else {
+        } else if (rows.length ==0){
+            const Toast = Swal.mixin({ //POP
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Usuario no encontrado'
+
+            })
+        }else{
             var long = rows.length;
             for (let i = 0; i < long; i++) {
                 var valorIdCliente = Number(rows[i].id_cliente);
-
-                $documentos = `select descDocumentos from carpeta where id_carpeta='${valorIdCliente}'`;
+                $documentos = `select descDocumentos from carpeta where cliente_id_cliente='${valorIdCliente}'`;
                 conexion.query($documentos, function (err, rows) {
                     if (err) {
                         console.log("error en el query");
