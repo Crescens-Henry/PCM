@@ -13,7 +13,25 @@ function actualizarFecha() {
             console.log("error en el query");
             console.log(err);
             return;
-        } else {
+        } else if (rows.length ==0){//SI LOS LOS DATOS EXTRAIDOS ES 0
+            const Toast = Swal.mixin({ //POP
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Usuario no encontrado'
+
+            })
+        }else{
             var long = rows.length; //SE TOMA EL LARGO DE LA TABLA (OSEA LOS DATOS QUE CONTIENE)
             for (i = 0; i < long; i++) {
                 var valorId = Number(rows[0].id_cliente); //EL VALOR DE LOS ID SE GUARDAN EN UNA LISTA DE NUMEROS
