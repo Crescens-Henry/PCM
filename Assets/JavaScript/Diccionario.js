@@ -240,7 +240,25 @@ function borrarPalabra() {
             console.log("error en el query");
             console.log(err);
             return;
-        } else {
+        } else if (rows.length == 0) { //
+            const Toast = Swal.mixin({ //POP
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'palabra no encontrada'
+
+            })
+        } else{
             for (i = 0; i < rows.length; i++) {
                 arbolBinario.Borrar(palabra[i]);
             }
